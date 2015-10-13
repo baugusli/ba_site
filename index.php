@@ -33,8 +33,25 @@
 	  
 	  <!-- Search Form -->
        <form class="form-inline">	  
-        <div class="row gutter-10">
-		  <div class="col-sm-12 col-md-2-offset-2"> Quick Search </div>
+        <div class="row gutter-0">
+		
+		
+  
+  <span class="caret"></span></button>
+ 
+</div>
+
+
+		  <div class="col-sm-12 col-md-2-offset-2"> 
+		    <div class="dropdown">
+		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Quick Search <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+               <li><a href="#">Quick Search</a></li>
+               <li><a href="#">Advanced Search</a></li>
+              </ul>
+		  </div>
+		  
+		 	  
 		  <div class="col-sm-6 col-md-2"> 
 		     <div class="input-group"> 
 			    <div class="input-group-addon">
@@ -69,7 +86,18 @@
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				</div>
-			 <input type="text" class="form-control" id="searchNoOfPppl" name="searchNoOfPppl" placeholder="No. Of People"> <!--RETRIEVE DYNAMICALLY FROM THE MAX NO OF PEOPLE OUR BIGGEST BOAT CAN HANDLE -->
+				
+				<!--RETRIEVE DYNAMICALLY FROM THE MAX NO OF PEOPLE OUR BIGGEST BOAT CAN HANDLE -->
+				<select class="form-control" id="searchNoOfPpl" name="searchNoOfPpl">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+				  <option value="5">5</option>
+				  <option value="6">6</option>
+                </select>
+	  
+			 
 			 </div>
 		 </div>	 
 
@@ -85,21 +113,52 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Captain 1</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Captain 2</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Captain 3</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
+	    
+           <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+             <img src="..." alt="...">
+               <div class="caption">
+                 <h3>Captain 1</h3>
+                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+               </div>
+            </div>
+         </div>
+		 
+		  <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+             <img src="..." alt="...">
+               <div class="caption">
+                 <h3>Captain 2</h3>
+                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+               </div>
+            </div>
+         </div>
+		 
+		 <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+             <img src="..." alt="...">
+               <div class="caption">
+                 <h3>Captain 3</h3>
+                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+               </div>
+            </div>
+         </div>
+		 
+		 <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+             <img src="..." alt="...">
+               <div class="caption">
+                 <h3>Captain 4</h3>
+                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+               </div>
+            </div>
+         </div>
+      
+
       </div>
 
       <hr>
@@ -109,52 +168,8 @@
       </footer>
     </div> <!-- /container -->
 	
-	
-	
-    <!--************************************************************************************************************************************************88 
-    <h1>
-	 Does script works?
-	</h1>
-	
-	<button id="yesButton" onClick=workButton("Yes")>Yes</button> &nbsp &nbsp <button id="noButton" onClick=workButton("No")>No</button>
-	
-	<hr>
-	</br>
-	
-	<h1>
-	Does PHP works?
-	</h1>
-	
-	<?php
-	if (isset($_GET['submit'])){
-		
-		$name = $_GET['nameText'];
-		echo "<p>Welcome " . $name . "!</p>";
-	}
-	?>
-	<form action="index.php" method="GET">
-	<p>What is your name, Sir?  <input type="text" id="nameText" name="nameText"></input></p>
-	<p><input type="submit" value="submit"></input></p>
-	</form>
--->
+  <?php
+  include_once "footer/footer.php";
+  ?>
  </body>
- 
- <script>
- 
- function workButton(ans){
-	 
-	 var userInput = ans;
- if(userInput == "Yes"){
-	 alert("YAY!! IT WORKSS");
- }
- 
- if (userInput == "No"){
-	 
-	 alert("NOOOOOOOOO!!!! WHYYYYYYYYYY?!?!! JK IT STILL WORKS");
- }
-	 
- }
- </script>
- 
-
 </html>
