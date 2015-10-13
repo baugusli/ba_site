@@ -1,71 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ 
+  <!-- IMPT do not delete the first three meta tag. Used for bootstrap -->
   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-   <title>Captains' Hub</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Captains' Hub</title>
+  
+  <!-- The following three meta is for SEO. Change accordingly for each page. -->
+  <meta name="title" content="Captain's Hub" />
   <meta name="description" content="Captains' Hub is a portal where anglers can search for the best captain that serves charter boat services to take the anglers fishing.">
-<meta name="keywords" content="Portal,Captains,Hub,Captains' Hub, Charter Boat, Fishing, Fish, Tour Guide ">
-<meta name="author" content="Bryan Austin Augusli, Nazira Bukhari, John Youngblut, Sagar Singh, Harka Rai, William Parker, Jacinta Lam">
-<meta name="robots" content="index,follow" />
-<meta name="title" content="Captain's Hub" />
-
- 
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	
-	
-  <!-- 32x32 -->
-  <!--[if IE]><link rel="shortcut icon" href="assets/icon/baugusli.ico"><![endif]-->
-  
-  <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. --> 
-  <link rel="apple-touch-icon-precomposed" href="">
-
-  <!--196x196 -->
-  <link rel="icon" href="">
+  <meta name="keywords" content="Portal,Captains,Hub,Captains' Hub, Charter Boat, Fishing, Fish, Tour Guide ">
   
   
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
-  <style>
-
-  </style>
- </head>
- 
+  <!-- header.php contains js,css, and favicon links and some fix meta for SEO. -->
+  <?php
+  require "header/header.php";
+  ?>
+  
  <body>
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Captain's Hub</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+ 
+   <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
+   <?php
+    include_once "navigation/guestNav.php";
+   ?>	
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -76,15 +36,44 @@
         <div class="row">
 		  <div class="col-md-2"> Quick Search </div>
 		  <div class="col-md-2"> 
-		     <div class="input-group"> <div class="input-group-addon">Zip Code</div>
+		     <div class="input-group"> 
+			    <div class="input-group-addon">
+			       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+				</div>
 			 <input type="text" class="form-control" id="searchZipCode" name="searchZipCode"placeholder="Zip Code">
 			 
 			 </div>
 			 
 		  </div>
-		  <div class="col-md-2"> Within: <input type="text" name="searchWithinRange"/></div>
-		  <div class="col-md-2"> Date: <input type="text" name="searchDate"/></div>
-		  <div class="col-md-2"> No. of People: <input type="text" name="searchNoOfPpl"/></div>
+		  
+		  <div class="col-md-2">
+            <div class="input-group"> 
+			    <div class="input-group-addon">
+			       <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+				</div>
+			 <input type="text" class="form-control" id="searchWithinRange" name="searchWithinRange" placeholder="Within">
+			 </div>
+          </div>
+
+		  <div class="col-md-2">
+              <div class="input-group"> 
+			    <div class="input-group-addon">
+			       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+				</div>
+			 <input type="text" class="form-control" id="searchDate" name="searchDate"placeholder="Date">
+			 </div>
+		</div>	 
+		  
+		  <div class="col-md-2">
+             <div class="input-group"> 
+			    <div class="input-group-addon">
+			       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				</div>
+			 <input type="text" class="form-control" id="searchNoOfPppl" name="searchNoOfPppl" placeholder="No. Of People"> <!--RETRIEVE DYNAMICALLY FROM THE MAX NO OF PEOPLE OUR BIGGEST BOAT CAN HANDLE -->
+			 </div>
+		 </div>	 
+
+
 		  <div class="col-md-2"> <button type="submit" class="btn btn-primary">Search</button> </div>
 		 </form>
 		 
