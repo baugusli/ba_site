@@ -20,6 +20,7 @@
   require "header/header.php";
   ?>
   
+
  <body>
  
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
@@ -30,27 +31,20 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">	
-	  
+	    <div class="row gutter-0">
 	  <!-- Search Form -->
-       <form class="form-inline">	  
-        <div class="row gutter-0">
-		
-		
-  
-  <span class="caret"></span></button>
- 
-</div>
+       <form class="form-inline" id="searchForm">	  
+        
 
-
-		  <div class="col-sm-12 col-md-2-offset-2"> 
-		    <div class="dropdown">
+		  <div class="col-sm-12 col-md-2"> 
+		    
 		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Quick Search <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
                <li><a href="#">Quick Search</a></li>
                <li><a href="#">Advanced Search</a></li>
               </ul>
+		 
 		  </div>
-		  
 		 	  
 		  <div class="col-sm-6 col-md-2"> 
 		     <div class="input-group"> 
@@ -89,7 +83,7 @@
 				
 				<!--RETRIEVE DYNAMICALLY FROM THE MAX NO OF PEOPLE OUR BIGGEST BOAT CAN HANDLE -->
 				<select class="form-control" id="searchNoOfPpl" name="searchNoOfPpl">
-                  <option value="1">1</option>
+                  <option value="1" selected="selected">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
@@ -106,54 +100,54 @@
 		 </form>
 		 
 		</div>
-		
+	   </div>
       </div>
-    </div>
+   
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
 	    
-           <div class="col-sm-6 col-md-3">
+           <div class="col-xs-6 col-sm-6 col-md-3">
             <div class="thumbnail">
-             <img src="..." alt="...">
+             <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3>Captain 1</h3>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
          </div>
 		 
-		  <div class="col-sm-6 col-md-3">
+		  <div class="col-xs-6 col-sm-6 col-md-3">
             <div class="thumbnail">
-             <img src="..." alt="...">
+             <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3>Captain 2</h3>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
          </div>
 		 
-		 <div class="col-sm-6 col-md-3">
+		 <div class="col-xs-6 col-sm-6 col-md-3">
             <div class="thumbnail">
-             <img src="..." alt="...">
+             <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3>Captain 3</h3>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
          </div>
 		 
-		 <div class="col-sm-6 col-md-3">
+		 <div class="col-xs-6 col-sm-6 col-md-3">
             <div class="thumbnail">
-             <img src="..." alt="...">
+             <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3>Captain 4</h3>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a></p>
                </div>
             </div>
          </div>
@@ -171,5 +165,15 @@
   <?php
   include_once "footer/footer.php";
   ?>
+  
+  
+  <script>
+    $( "#searchDate" ).datepicker({
+	inline: true
+  });
+
+
+  </script>
+  
  </body>
 </html>
