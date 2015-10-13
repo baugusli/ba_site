@@ -33,9 +33,9 @@
 	  
 	  <!-- Search Form -->
        <form class="form-inline">	  
-        <div class="row">
-		  <div class="col-md-2"> Quick Search </div>
-		  <div class="col-md-2"> 
+        <div class="row gutter-10">
+		  <div class="col-sm-12 col-md-2-offset-2"> Quick Search </div>
+		  <div class="col-sm-6 col-md-2"> 
 		     <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
@@ -46,7 +46,7 @@
 			 
 		  </div>
 		  
-		  <div class="col-md-2">
+		  <div class="col-sm-6 col-md-2">
             <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
@@ -55,7 +55,7 @@
 			 </div>
           </div>
 
-		  <div class="col-md-2">
+		  <div class="col-sm-6 col-md-2">
               <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -64,7 +64,7 @@
 			 </div>
 		</div>	 
 		  
-		  <div class="col-md-2">
+		  <div class="col-sm-6 col-md-2">
              <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
