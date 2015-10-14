@@ -21,3 +21,20 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.navBarMain {
+ background-color: #012C57;
+}
+
+.navbar-header a{
+color: #FDBA13;
+}
+
+.navbar-header a:visited{
+color: #FDBA13;
+}
+
+.navbar-header a:hover{
+color: #FDBA13;
+}
+
