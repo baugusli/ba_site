@@ -22,21 +22,18 @@
   
 
  <body>
- 
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
    <?php
     include_once "navigation/guestNav.php";
    ?>	
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <div class="jumbotron jumbotronImg">
       <div class="container">	
-	    <div class="row gutter-0">
+	    <div class="row row-5-gutter">
 	  <!-- Search Form -->
        <form class="form-inline" id="searchForm">	  
-        
-
-		  <div class="col-sm-12 col-md-2"> 
+		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
 		    
 		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Quick Search <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
@@ -46,7 +43,7 @@
 		 
 		  </div>
 		 	  
-		  <div class="col-sm-6 col-md-2"> 
+		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
 		     <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
@@ -57,7 +54,7 @@
 			 
 		  </div>
 		  
-		  <div class="col-sm-6 col-md-2">
+		  <div class="col-sm-12 col-md-2 col-5-gutter" >
             <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
@@ -66,7 +63,7 @@
 			 </div>
           </div>
 
-		  <div class="col-sm-6 col-md-2">
+		  <div class="col-sm-12 col-md-2 col-5-gutter">
               <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -75,7 +72,7 @@
 			 </div>
 		</div>	 
 		  
-		  <div class="col-sm-6 col-md-2">
+		  <div class="col-sm-12 col-md-2 col-5-gutter" >
              <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -94,12 +91,24 @@
 			 
 			 </div>
 		 </div>	 
+		 
+		  <div class="col-sm-12 col-md-2 col-5-gutter" >
+		     <div class="input-group"> 
+			
+			   <button type="submit" class="btn btn-primary">Search</button>
+			 </div>
+			 
+		</div>
+			
 
 
-		  <div class="col-md-2"> <button type="submit" class="btn btn-primary">Search</button> </div>
 		 </form>
 		 
 		</div>
+		
+		
+		<h2>Are you ready to fish?</h2>
+		
 	   </div>
       </div>
    
@@ -108,7 +117,7 @@
       <!-- Example row of columns -->
       <div class="row">
 	    
-           <div class="col-xs-6 col-sm-6 col-md-3">
+           <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -119,7 +128,7 @@
             </div>
          </div>
 		 
-		  <div class="col-xs-6 col-sm-6 col-md-3">
+		  <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -130,7 +139,7 @@
             </div>
          </div>
 		 
-		 <div class="col-xs-6 col-sm-6 col-md-3">
+		 <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -141,7 +150,7 @@
             </div>
          </div>
 		 
-		 <div class="col-xs-6 col-sm-6 col-md-3">
+		 <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -157,14 +166,14 @@
 
       <hr>
 
-      <footer>
-        <p>&copy; Captain's Hub 2015</p>
-      </footer>
+      
+	   <?php
+        include_once "footer/footer.php";
+       ?>
+  
     </div> <!-- /container -->
 	
-  <?php
-  include_once "footer/footer.php";
-  ?>
+ 
   
   
   <script>
