@@ -36,9 +36,17 @@
 	$lname = $_POST['inputLastName'];
 	
 	$captain = new Captain();
-	$captain->registerCaptain($username,$pwd,$fname,$lname);
+	if($captain->registerCaptain($username,$pwd,$fname,$lname)){
+		echo "<h1>Registration Successful</h1>";
+		
+	}
 	
-	echo "<h1>Registration Successful</h1>"
+	else{
+		
+		echo"<h1>Fail</h1>";
+	}
+	
+	
 	}
    ?>	
    

@@ -34,7 +34,7 @@
 
 	<?php
 	
-	require_once "class/Database.class.php";
+	include "class/Database.class.php";
 	
 	?>
 	
