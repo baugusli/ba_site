@@ -56,7 +56,7 @@
 		
 		//TRY EXTENDING THE CLASS TO DB
 		public function registerCaptain($username, $password, $firstName, $lastName){
-			
+			echo "Goes in function";
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
