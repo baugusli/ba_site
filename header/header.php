@@ -32,5 +32,11 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/jquery-ui.js"></script>
 
+	<?php
+	
+	require_once "class/Database.class.php";
+	
+	?>
+	
  </head>
  

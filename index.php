@@ -25,6 +25,7 @@
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
    <?php
     include_once "navigation/guestNav.php";
+	
    ?>	
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -108,6 +109,22 @@
 		
 		
 		<h2>Are you ready to fish?</h2>
+		
+		<?php
+	
+			
+			/*
+			$db = Database::getInstance();
+            $mysqli = $db->getConnection(); 
+            $query = "SELECT * FROM testTable";
+    	    if($result = $mysqli->query($query)){
+				
+				while($row = $result->fetch_row()){
+					printf("<p>Name is:" . $row[1] ."</p>");
+				}
+			}
+			*/
+		?>
 		
 	   </div>
       </div>
