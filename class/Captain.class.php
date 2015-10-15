@@ -60,7 +60,7 @@
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `password`, `first_name`, `last_name`) VALUES ('$username', '$password', '$firstName', '$lastName')";
+			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`) VALUES ('$username', '$password', '$firstName', '$lastName')";
 			if(!$mysqli->query($query)){
 				$mysqli->close();
 				die('ERROR!');
