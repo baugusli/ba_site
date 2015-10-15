@@ -24,7 +24,7 @@
  <body>
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
    <?php
-    include_once "navigation/guestNav.php";
+    include "navigation/guestNav.php";
 	
    ?>	
 
@@ -109,22 +109,7 @@
 		
 		
 		<h2>Are you ready to fish?</h2>
-		
-		<?php
 	
-			
-			/*
-			$db = Database::getInstance();
-            $mysqli = $db->getConnection(); 
-            $query = "SELECT * FROM testTable";
-    	    if($result = $mysqli->query($query)){
-				
-				while($row = $result->fetch_row()){
-					printf("<p>Name is:" . $row[1] ."</p>");
-				}
-			}
-			*/
-		?>
 		
 	   </div>
       </div>
@@ -136,59 +121,32 @@
 	    
 		<?php
 		include_once "class/Captain.class.php";
-		
+		$captList = array();
 		$captain = new Captain();
-		$capt = retrieveCaptain();
-				$firstName = $capt->getFirstName();
-				$lastName = $capt->getLastName();
-				
-				echo "<h1>".$firstName." ".$lastName."</h1>";
-		?>
+		$captList = $captain->retrieveCaptain();
 		
-           <div class="col-xs-6 col-sm-4 col-md-3">
+		   for ($i =0;$i<sizeof($captList);$i++){
+			   
+			   $captName = $captList[$i]->getFirstName() . " " . $captList[$i]->getLastName();
+			  
+			  
+	    ?>
+		
+			   <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
-                 <h3>Captain 1</h3>
+                 <h3><?php echo $captName; ?></h3>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
                    <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
          </div>
-		 
-		  <div class="col-xs-6 col-sm-4 col-md-3">
-            <div class="thumbnail">
-             <img src="assets/images/captainsTest.jpg" alt="...">
-               <div class="caption">
-                 <h3>Captain 2</h3>
-                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
-               </div>
-            </div>
-         </div>
-		 
-		 <div class="col-xs-6 col-sm-4 col-md-3">
-            <div class="thumbnail">
-             <img src="assets/images/captainsTest.jpg" alt="...">
-               <div class="caption">
-                 <h3>Captain 3</h3>
-                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
-               </div>
-            </div>
-         </div>
-		 
-		 <div class="col-xs-6 col-sm-4 col-md-3">
-            <div class="thumbnail">
-             <img src="assets/images/captainsTest.jpg" alt="...">
-               <div class="caption">
-                 <h3>Captain 4</h3>
-                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                   <p><a href="#" class="btn btn-primary" role="button">Book Now</a></p>
-               </div>
-            </div>
-         </div>
-      
+			
+        <?php			
+		   }
+		?>
+	
 
       </div>
 
@@ -208,6 +166,11 @@
     $( "#searchDate" ).datepicker({
 	inline: true
   });
+  
+  $('#btn_signup').click(function(){
+   window.location.href='captSignUp.php';
+})
+
 
 
   </script>

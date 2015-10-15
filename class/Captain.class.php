@@ -81,12 +81,18 @@
 			$query = "SELECT * FROM captain";
 			$result = $mysqli->query($query);
 			
+			$counter = 0;
+			$captList = array();
 			while($news_row = $result->fetch_array()) {
-				
-				$this->firstName = $news_row['first_name'];
-				$this->lastName = $news_row['last_name'];
-				
+				$captain = new Captain();
+				  $captain -> setFirstName($news_row['first_name']);
+				  $captain -> setLastName($news_row['last_name']);
+				  
+				  $captList[$counter] = $captain;
+				  $counter++;
 			}
+			
+			return $captList;
 			
 		}
 		

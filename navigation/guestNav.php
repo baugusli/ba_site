@@ -7,10 +7,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Captain's Hub</a>
+          <a class="navbar-brand" href="index.php">Captain's Hub</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" action="captSignUp.php">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
             </div>
@@ -18,6 +18,7 @@
               <input type="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
+			<button id="btn_signup" class="btn btn-info">Sign Up</button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>

@@ -25,7 +25,7 @@
  
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
    <?php
-    include_once "navigation/guestNav.php";
+    include "navigation/guestNav.php";
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
 	include_once "class/Captain.class.php";
@@ -55,34 +55,34 @@
    <form class="form-horizontal" action="captSignUp.php" method="POST">
   <div class="form-group">
     <label for="inputUserName" class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="text" class="form-control" id="inputUserName" name="inputUserName" placeholder="Username">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
     </div>
   </div>
   
   <div class="form-group">
     <label for="inputFirstName" class="col-sm-2 control-label">First Name:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name">
     </div>
   </div>
   
   <div class="form-group">
     <label for="inputLastName" class="col-sm-2 control-label">Last Name:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name">
     </div>
   </div>
   
   
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-2 col-sm-8">
       <button type="submit" class="btn btn-default">Register</button>
     </div>
   </div>
