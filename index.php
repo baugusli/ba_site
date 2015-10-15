@@ -134,6 +134,17 @@
       <!-- Example row of columns -->
       <div class="row">
 	    
+		<?php
+		include_once "class/Captain.class.php";
+		
+		$captain = new Captain();
+		$capt = retrieveCaptain();
+				$firstName = $capt->getFirstName();
+				$lastName = $capt->getLastName();
+				
+				echo "<h1>".$firstName." ".$lastName."</h1>";
+		?>
+		
            <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">

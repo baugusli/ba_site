@@ -1,6 +1,6 @@
 <?php
 	//include pls
-	include "Database.class.php";
+	
 	
 	class Captain{
 		private $accountId;
@@ -56,13 +56,13 @@
 		
 		//TRY EXTENDING THE CLASS TO DB
 		public function registerCaptain($username, $password, $firstName, $lastName){
-			echo "Goes in function";
+			
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
 			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`) VALUES ('$username', '$password', '$firstName', '$lastName')";
 			if(!$mysqli->query($query)){
-				$mysqli->close();
+				
 				die('ERROR!');
 			}
 			else{
@@ -73,17 +73,24 @@
 			return false;
 		}
 		
-		/*
+		public function retrieveCaptain(){
+			
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
-            $query = "SELECT * FROM testTable";
-    	    if($result = $mysqli->query($query)){
+					
+			$query = "SELECT * FROM captain";
+			$result = $mysqli->query($query);
+			
+			while($news_row = $result->fetch_array()) {
 				
-				while($row = $result->fetch_row()){
-					printf("<p>Name is:" . $row[1] ."</p>");
-				}
+				$this->firstName = $news_row['first_name'];
+				$this->lastName = $news_row['last_name'];
+				
 			}
-			*/
+			
+		}
+		
+	
 		
 	}
 
