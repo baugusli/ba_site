@@ -137,6 +137,7 @@
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3><?php echo $captName; ?></h3>
+				   <div class="captRate"></div>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
                    <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
@@ -158,21 +159,14 @@
        ?>
   
     </div> <!-- /container -->
-	
- 
-  
+	 
   
   <script>
     $( "#searchDate" ).datepicker({
 	inline: true
   });
-  
-  $('#btn_signup').click(function(){
-   window.location.href='captSignUp.php';
-})
 
-
-
+$('.captRate').raty({ score: 2 });
   </script>
   
  </body>
