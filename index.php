@@ -33,7 +33,7 @@
       <div class="container">	
 	    <div class="row row-5-gutter">
 	  <!-- Search Form -->
-       <form class="form-inline" id="searchForm">	  
+       <form class="form-inline" id="searchForm" method="post" action="search.php">	  
 		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
 		    
 		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Quick Search <span class="caret"></span></button>
@@ -117,9 +117,10 @@
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
+      <div class="row" id="captRow">
 	    
 		<?php
+		if($_SERVER['REQUEST_METHOD'] != 'POST'){ 
 		include_once "class/Captain.class.php";
 		$captList = array();
 		$captain = new Captain();
@@ -128,7 +129,7 @@
 		   for ($i =0;$i<sizeof($captList);$i++){
 			   
 			   $captName = $captList[$i]->getFirstName() . " " . $captList[$i]->getLastName();
-			  
+			   $rating = $captList[$i]->getRating();
 			  
 	    ?>
 		
@@ -137,7 +138,7 @@
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
                  <h3><?php echo $captName; ?></h3>
-				   <div class="captRate"></div>
+				   <div id="captRate" class="captRate" data-score="<?php echo $rating; ?>"></div>
                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
                    <p><a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
@@ -146,6 +147,7 @@
 			
         <?php			
 		   }
+		}
 		?>
 	
 
@@ -166,22 +168,94 @@
 	inline: true
   });
 
-$('.captRate').raty({ score: 2 });
+$('.captRate').raty({ 
+  readOnly:true,
+   score: function() {
+    return $(this).attr('data-score');
+  },
+  
+  path: 'assets/rate/images'
+  
 
-$('#searchForm').submit(function(event) {
-	 event.preventDefault();
-  $.ajax({
-  url: "https://www.zipcodeapi.com/rest/D34HXEETyax2pzAbnZNPfk79W4YfEddighZeWD8vNFxde7pC7csmwzwtDuIiIWAY/radius.json/",
-  type: "GET",
-  data: {zip_code : $("#searchZipCode").text(), distance : $("searchWithinRange").text(), units : "mile"},
-  dataType: "json",
-  success: function(data){
-	  alert("OMG");
-  }
-});
 
 });
 
+
+		
+$("#searchForm").submit(function(event) {
+	
+	var searchFormData = {
+            'searchZipCode'      : $('#searchZipCode').val(),
+            'searchWithinRange'  : $('#searchWithinRange').val()
+        }
+		
+		
+$.ajax({ url: 'search.php',
+ data: searchFormData,
+ dataType: 'json',
+ type: 'post',
+encode:true,
+success: function(data){
+	populateHomePage(data);
+	$('.captRate').raty({ 
+  readOnly:true,
+   score: function() {
+    return $(this).attr('data-score');
+  },
+  
+  path: 'assets/rate/images'
+  
+
+
+});
+},
+error: function(xhr, status, error) {
+	
+  alert(xhr.responseText);
+}
+
+
+});
+
+ 
+ event.preventDefault();
+ 
+ 
+});
+
+function populateHomePage(data){
+	 var firstName = "";
+	 var lastName = "";
+     var fullName = "";
+	 var captain = "";
+	 var rating = "";
+	 $("#captRow").empty();
+	 for (var i = 0;i<data.length;i++){
+			   
+			   firstName = data[i]['firstName'];
+			   secondName = data[i]['lastName'];
+			   
+			   fullName = firstName + " " + secondName;
+			   
+			   rating = data[i]['rating'];
+			   
+			  captain = "<div class='col-xs-6 col-sm-4 col-md-3'>" +
+                         " <div class='thumbnail'>" +
+							 "<img src='assets/images/captainsTest.jpg' alt='...'>" +
+							   "<div class='caption'>" +
+								 "<h3>"+ fullName + "</h3>" +
+								   "<div id='captRate' class='captRate' data-score='"+ rating +"'></div>" +
+								   "<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p> " +
+								   "<p><a href='#' class='btn btn-primary' role='button'>Book Now</a> </p>" +
+							   "</div>" +
+							"</div>" +
+						 "</div>";
+		 
+		 
+			   $("#captRow").append(captain);
+			   
+	 }
+}
 
   </script>
   

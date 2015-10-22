@@ -35,16 +35,19 @@
 	$fname = $_POST['inputFirstName'];
 	$lname = $_POST['inputLastName'];
 	$zip = $_POST['inputZip'];
+	$rating = $_POST['inputRating'];
 	
 	$captain = new Captain();
-	if($captain->registerCaptain($username,$pwd,$fname,$lname,$zip)){
-		echo "<h1>Registration Successful</h1>";
+	if($captain->registerCaptain($username,$pwd,$fname,$lname,$zip,$rating)){
 		
+		echo "<div class='alert alert-success'> <strong> Registration Successful! </strong> </div>";
+
+
 	}
 	
 	else{
 		
-		echo"<h1>Fail</h1>";
+		echo "<div class='alert alert-danger'> <strong> Registration Failed! </strong> </div>";
 	}
 	
 	
@@ -88,6 +91,12 @@
     </div>
   </div>
   
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class='captRate'></div><input type="text" id="inputRating" name="inputRating" style="display:none;">
+    </div>
+  </div>
+  
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
@@ -95,9 +104,15 @@
     </div>
   </div>
   
+  
+  
 </form>
 
-   
+   <form action="upload.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
    
    
    
@@ -108,6 +123,18 @@
   <?php
   include_once "footer/footer.php";
   ?>
+  
+  <script>
+   $('.captRate').raty({
+	   
+	   path: 'assets/rate/images',
+	   click: function(score,evt){
+		   $('#inputRating').val(score);
+		   
+	   }
+	   
+	   });
+  </script>
   
  </body>
 </html>

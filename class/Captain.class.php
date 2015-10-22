@@ -3,12 +3,13 @@
 	
 	
 	class Captain{
-		private $accountId;
-		private $username;
-		private $password;
-		private $firstName;
-		private $lastName;
-		private $zip;
+		public $accountId;
+		public $username;
+		public $password;
+		public $firstName;
+		public $lastName;
+		public $zip;
+		public $rating;
 		
 	
 		public function __construct(){
@@ -61,18 +62,27 @@
 			$this->zip = $zip;
 		}
 		
+		public function getRating(){
+			return $this->rating;
+		}
+		
+		public function setRating($rating){
+			$this->rating = $rating;
+		}
+		
+		
 		
 		
 		
 		//TRY EXTENDING THE CLASS TO DB
-		public function registerCaptain($username, $password, $firstName, $lastName,$zip){
+		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$rating){
 			
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`) VALUES ('$username', '$password', '$firstName', '$lastName', $zip)";
+			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`, `rating`) VALUES ('$username', '$password', '$firstName', '$lastName', $zip,$rating)";
 			if(!$mysqli->query($query)){
-				 printf("Connect failed: %s\n", $mysqli->connect_error);
+				 echo mysql_error();
 				die('ERROR!');
 			}
 			else{
@@ -97,6 +107,31 @@
 				$captain = new Captain();
 				  $captain -> setFirstName($news_row['first_name']);
 				  $captain -> setLastName($news_row['last_name']);
+				  $captain -> setRating($news_row['rating']);
+				  
+				  $captList[$counter] = $captain;
+				  $counter++;
+			}
+			
+			return $captList;
+			
+		}
+		
+		public function searchCaptain($zip){
+			
+			$db = Database::getInstance();
+            $mysqli = $db->getConnection(); 
+					
+			$query = "SELECT * FROM captain WHERE zip = $zip";
+			$result = $mysqli->query($query);
+			
+			$counter = 0;
+			$captList = array();
+			while($news_row = $result->fetch_array()) {
+				$captain = new Captain();
+				  $captain -> setFirstName($news_row['first_name']);
+				  $captain -> setLastName($news_row['last_name']);
+				  $captain -> setRating($news_row['rating']);
 				  
 				  $captList[$counter] = $captain;
 				  $counter++;
