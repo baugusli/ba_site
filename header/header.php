@@ -34,6 +34,10 @@
     <script src="../assets/js/jquery-ui.js"></script>
 	 <script src="../assets/js/jquery-raty.js"></script>
 	 
+	 <!-- Mght be a prob?-->
+	 <script type="text/javascript" src="../assets/js/bootstrap-filestyle.min.js"> </script>
+	 
+	 
 	 <link href="../assets/rate/jquery.raty.css" rel="stylesheet">
 	 <script src="../assets/rate/jquery.raty.js"></script>
 

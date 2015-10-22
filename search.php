@@ -13,7 +13,9 @@ else{
 	$searchZip = "22003";
 	$searchWithinRange = "50";
 }
-$url = "https://www.zipcodeapi.com/rest/D34HXEETyax2pzAbnZNPfk79W4YfEddighZeWD8vNFxde7pC7csmwzwtDuIiIWAY/radius.json/".$searchZip."/".$searchWithinRange."/mile";
+
+$api = "yYe8PVJnEAjsXdEgpQT6B5Fu5ZeEBD3aBhiqd2OSD8kAlYQKOKRqQwUVw8z8MDin";
+$url = "https://www.zipcodeapi.com/rest/". $api ."/radius.json/".$searchZip."/".$searchWithinRange."/mile";
 
 $json = file_get_contents($url);
 $json_data = json_decode($json, true);

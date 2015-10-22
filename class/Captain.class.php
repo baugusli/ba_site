@@ -3,7 +3,7 @@
 	
 	
 	class Captain{
-		public $accountId;
+		public $captain_id;
 		public $username;
 		public $password;
 		public $firstName;
@@ -15,12 +15,12 @@
 		public function __construct(){
 		}
 		
-		public function getAccountId(){
-			return $this->accountId;
+		public function getCaptainId(){
+			return $this->captain_id;
 		}
 		
-		public function setAccountId($accountId){
-			$this->accountId = $accountId;
+		public function setCaptainId($captain_id){
+			$this->captain_id = $captain_id;
 		}
 		
 		public function getUsername(){
@@ -108,6 +108,7 @@
 				  $captain -> setFirstName($news_row['first_name']);
 				  $captain -> setLastName($news_row['last_name']);
 				  $captain -> setRating($news_row['rating']);
+				   $captain -> setCaptainId($news_row['captain_id']);
 				  
 				  $captList[$counter] = $captain;
 				  $counter++;
@@ -132,6 +133,7 @@
 				  $captain -> setFirstName($news_row['first_name']);
 				  $captain -> setLastName($news_row['last_name']);
 				  $captain -> setRating($news_row['rating']);
+				  $captain -> setCaptainId($news_row['captain_id']);
 				  
 				  $captList[$counter] = $captain;
 				  $counter++;

@@ -92,6 +92,7 @@
   </div>
   
   <div class="form-group">
+  <label for="inputZip" class="col-sm-2 control-label">Rating:</label>
     <div class="col-sm-offset-2 col-sm-8">
       <div class='captRate'></div><input type="text" id="inputRating" name="inputRating" style="display:none;">
     </div>
@@ -110,9 +111,9 @@
 
    <form action="upload.php" method="post" enctype="multipart/form-data">
     Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+    <input type="file" name="fileToUpload" id="fileToUpload" class="filestyle" data-buttonName="btn-primary">
+    <input type="submit" value="Upload Image" class="btn btn-default" name="submit">
+   </form>
    
    
    

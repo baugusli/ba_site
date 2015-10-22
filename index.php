@@ -30,7 +30,11 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron jumbotronImg">
-      <div class="container">	
+      <div class="container">
+
+
+<!-- SEARCH ************************* -->
+	  
 	    <div class="row row-5-gutter">
 	  <!-- Search Form -->
        <form class="form-inline" id="searchForm" method="post" action="search.php">	  
@@ -105,11 +109,38 @@
 
 		 </form>
 		 
-		</div>
+		</div>	
 		
+		<!-- FILTER **************** -->
+		 <div class="row row-5-gutter">
+	  <!-- Search Form -->
+       <form class="form-inline" id="filterForm">	  
+		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
+		    
+		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter</button>
+			 
+		  </div>
+		 	  
+		  <div class="col-sm-12 col-md-8 col-5-gutter" >
+		     <div class="form-group">
+			   <label for="filterRating" class="col-sm-2 control-label">Captain's Rating</label>
+			 </div>
+			   
+			   <div class="form-control" id="filterRatingOption"> </div> & up
+        
+	  		 
+		 </div>	 
+		 
+		
+
+		 </form>
+		 
+		</div>	
+		
+		
+		<!-- END************************* -->
 		
 		<h2>Are you ready to fish?</h2>
-	
 		
 	   </div>
       </div>
@@ -130,10 +161,10 @@
 			   
 			   $captName = $captList[$i]->getFirstName() . " " . $captList[$i]->getLastName();
 			   $rating = $captList[$i]->getRating();
-			  
+			   $captId = $captList[$i]->getCaptainId();
 	    ?>
 		
-			   <div class="col-xs-6 col-sm-4 col-md-3">
+			   <div class="col-xs-6 col-sm-4 col-md-3" id="<?php echo $captId;?>">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -176,8 +207,17 @@ $('.captRate').raty({
   
   path: 'assets/rate/images'
   
+});
 
-
+$('#filterRatingOption').raty({ 
+   score: 1,
+  path: 'assets/rate/images',
+   click: function(score,evt){
+		   
+		   
+		   
+	   }
+	   
 });
 
 
@@ -204,9 +244,7 @@ success: function(data){
   },
   
   path: 'assets/rate/images'
-  
-
-
+ 
 });
 },
 error: function(xhr, status, error) {
@@ -214,12 +252,9 @@ error: function(xhr, status, error) {
   alert(xhr.responseText);
 }
 
-
 });
-
  
  event.preventDefault();
- 
  
 });
 
@@ -231,7 +266,7 @@ function populateHomePage(data){
 	 var rating = "";
 	 $("#captRow").empty();
 	 for (var i = 0;i<data.length;i++){
-			   
+			   captain_id = data[i]['captain_id'];
 			   firstName = data[i]['firstName'];
 			   secondName = data[i]['lastName'];
 			   
@@ -239,7 +274,7 @@ function populateHomePage(data){
 			   
 			   rating = data[i]['rating'];
 			   
-			  captain = "<div class='col-xs-6 col-sm-4 col-md-3'>" +
+			  captain = "<div class='col-xs-6 col-sm-4 col-md-3' id'" + captain_id + "'>" +
                          " <div class='thumbnail'>" +
 							 "<img src='assets/images/captainsTest.jpg' alt='...'>" +
 							   "<div class='caption'>" +
