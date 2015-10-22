@@ -34,9 +34,10 @@
 	$pwd = md5($_POST['inputPassword']);
 	$fname = $_POST['inputFirstName'];
 	$lname = $_POST['inputLastName'];
+	$zip = $_POST['inputZip'];
 	
 	$captain = new Captain();
-	if($captain->registerCaptain($username,$pwd,$fname,$lname)){
+	if($captain->registerCaptain($username,$pwd,$fname,$lname,$zip)){
 		echo "<h1>Registration Successful</h1>";
 		
 	}
@@ -77,6 +78,13 @@
     <label for="inputLastName" class="col-sm-2 control-label">Last Name:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputZip" class="col-sm-2 control-label">Zip:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="inputZip" name="inputZip" placeholder="Zip Code">
     </div>
   </div>
   

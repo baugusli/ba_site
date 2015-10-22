@@ -167,6 +167,22 @@
   });
 
 $('.captRate').raty({ score: 2 });
+
+$('#searchForm').submit(function(event) {
+	 event.preventDefault();
+  $.ajax({
+  url: "https://www.zipcodeapi.com/rest/D34HXEETyax2pzAbnZNPfk79W4YfEddighZeWD8vNFxde7pC7csmwzwtDuIiIWAY/radius.json/",
+  type: "GET",
+  data: {zip_code : $("#searchZipCode").text(), distance : $("searchWithinRange").text(), units : "mile"},
+  dataType: "json",
+  success: function(data){
+	  alert("OMG");
+  }
+});
+
+});
+
+
   </script>
   
  </body>

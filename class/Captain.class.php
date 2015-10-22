@@ -8,6 +8,7 @@
 		private $password;
 		private $firstName;
 		private $lastName;
+		private $zip;
 		
 	
 		public function __construct(){
@@ -52,17 +53,26 @@
 			$this->lastName = $lastName;
 		}
 		
+		public function getZip(){
+			return $this->zip;
+		}
+		
+		public function setZip($zip){
+			$this->zip = $zip;
+		}
+		
+		
 		
 		
 		//TRY EXTENDING THE CLASS TO DB
-		public function registerCaptain($username, $password, $firstName, $lastName){
+		public function registerCaptain($username, $password, $firstName, $lastName,$zip){
 			
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`) VALUES ('$username', '$password', '$firstName', '$lastName')";
+			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`) VALUES ('$username', '$password', '$firstName', '$lastName', $zip)";
 			if(!$mysqli->query($query)){
-				
+				 printf("Connect failed: %s\n", $mysqli->connect_error);
 				die('ERROR!');
 			}
 			else{
