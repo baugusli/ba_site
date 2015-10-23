@@ -164,7 +164,7 @@
 			   $captId = $captList[$i]->getCaptainId();
 	    ?>
 		
-			   <div class="col-xs-6 col-sm-4 col-md-3" id="<?php echo $captId;?>">
+			   <div class="col-xs-6 col-sm-4 col-md-3 captClass" id="<?php echo $captId;?>">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -213,9 +213,30 @@ $('#filterRatingOption').raty({
    score: 1,
   path: 'assets/rate/images',
    click: function(score,evt){
-		   
-		   
-		   
+
+		 var captRatingPulled = 0;
+		 var testArr = new Array();
+		 var o = 0;
+		 
+		 $(".captClass").each( function () {
+			 captRatingPulled = $(this).find("#captRate").attr('data-score');
+			 
+			 if(captRatingPulled < score){
+				 $(this).hide();
+				
+			 }
+			 
+			 else{
+				 $(this).show();
+				 
+			 }
+			 
+			o++; 
+          });
+		  
+		
+
+
 	   }
 	   
 });
