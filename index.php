@@ -30,6 +30,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron jumbotronImg">
+	 
       <div class="container">
 
 
@@ -64,7 +65,14 @@
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
 				</div>
-			 <input type="text" class="form-control" id="searchWithinRange" name="searchWithinRange" placeholder="Within">
+				<select class="form-control" id="searchWithinRange" name="searchWithinRange">
+                  <option value="5" selected="selected">5 Miles</option>
+                  <option value="15">15 Miles</option>
+                  <option value="25">25 Miles</option>
+                  <option value="50">50 Miles</option>
+				  <option value="100">100 Miles</option>
+                </select>
+				
 			 </div>
           </div>
 
@@ -129,9 +137,7 @@
 			   <div class="form-control" id="filterRatingOption"> </div> & up
         
 	  		 
-		 </div>	 
-		 
-		
+		 </div>	 	
 
 		 </form>
 		 
@@ -141,6 +147,7 @@
 		<!-- END************************* -->
 		
 		<h2>Are you ready to fish?</h2>
+		<div class="loadingPage"><!-- Place at bottom of page --></div>
 		
 	   </div>
       </div>
@@ -164,7 +171,7 @@
 			   $captId = $captList[$i]->getCaptainId();
 	    ?>
 		
-			   <div class="col-xs-6 col-sm-4 col-md-3 captClass" id="<?php echo $captId;?>">
+			   <div class="col-xs-6 col-sm-4 col-md-3 captClass">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -179,8 +186,7 @@
         <?php			
 		   }
 		}
-		?>
-	
+		?>	
 
       </div>
 
@@ -195,6 +201,8 @@
 	 
   
   <script>
+
+  
     $( "#searchDate" ).datepicker({
 	inline: true
   });
@@ -209,33 +217,35 @@ $('.captRate').raty({
   
 });
 
+//Filter click on rating stars event
 $('#filterRatingOption').raty({ 
    score: 1,
   path: 'assets/rate/images',
    click: function(score,evt){
-
 		 var captRatingPulled = 0;
-		 var testArr = new Array();
-		 var o = 0;
 		 
-		 $(".captClass").each( function () {
+            //For every captain that has captClass class		 
+		 $(".captClass").each( function () {	
+
+                //Fade everything first		 
+                 $(this).fadeOut();		
+				 
+				 //Once done execute the below code
+          }).promise().done(function(){
+			  
+			  //for loop again
+			   $(".captClass").each( function () {
 			 captRatingPulled = $(this).find("#captRate").attr('data-score');
 			 
-			 if(captRatingPulled < score){
-				 $(this).hide();
+			 //if higher than the filter score fade em in
+			 if(captRatingPulled >= score){
+				$(this).fadeIn();
 				
-			 }
-			 
-			 else{
-				 $(this).show();
-				 
-			 }
-			 
-			o++; 
-          });
-		  
-		
-
+			 }			
+			
+            });		  
+			  
+		  });
 
 	   }
 	   
@@ -245,29 +255,43 @@ $('#filterRatingOption').raty({
 		
 $("#searchForm").submit(function(event) {
 	
+	//getting value from search bar and store it 
 	var searchFormData = {
             'searchZipCode'      : $('#searchZipCode').val(),
             'searchWithinRange'  : $('#searchWithinRange').val()
         }
 		
-		
-$.ajax({ url: 'search.php',
+	//ajax function	
+$.ajax({ 
+
+//send request to search.php
+ url: 'search.php',
  data: searchFormData,
  dataType: 'json',
  type: 'post',
-encode:true,
-success: function(data){
+  encode:true,
+  
+  //start loading page by adding class to the body to show the loading gif in main.ss
+  beforeSend: function() { $("body").addClass("loading");},
+  complete: function() {$("body").removeClass("loading");},
+  
+  //when success
+  success: function(data){
+	  
+	  //populate the home page using javascript DOM manipulation
 	populateHomePage(data);
 	$('.captRate').raty({ 
-  readOnly:true,
-   score: function() {
-    return $(this).attr('data-score');
-  },
+      readOnly:true,
+      score: function() {
+      return $(this).attr('data-score');
+     },
   
-  path: 'assets/rate/images'
+     path: 'assets/rate/images'
  
-});
-},
+    });
+    },
+	
+	//if error show error.. TO BE DELETED IN PROD AND REPLACE IT WITH ERROR PAGE!!******************************************
 error: function(xhr, status, error) {
 	
   alert(xhr.responseText);
@@ -275,6 +299,7 @@ error: function(xhr, status, error) {
 
 });
  
+ //Prevent form submitting by default - meaning stop it from redirecting user to the action in the form
  event.preventDefault();
  
 });
@@ -295,7 +320,7 @@ function populateHomePage(data){
 			   
 			   rating = data[i]['rating'];
 			   
-			  captain = "<div class='col-xs-6 col-sm-4 col-md-3' id'" + captain_id + "'>" +
+			  captain = "<div class='col-xs-6 col-sm-4 col-md-3 captClass'>" +
                          " <div class='thumbnail'>" +
 							 "<img src='assets/images/captainsTest.jpg' alt='...'>" +
 							   "<div class='caption'>" +
@@ -307,11 +332,14 @@ function populateHomePage(data){
 							"</div>" +
 						 "</div>";
 		 
-		 
+		      
+			  //append the divs to the row with id captRow
 			   $("#captRow").append(captain);
 			   
 	 }
 }
+
+
 
   </script>
   

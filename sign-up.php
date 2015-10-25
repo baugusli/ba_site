@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Captains' Hub</title>
+  <title>Captains' Hub Sign Up</title>
   
   <!-- The following three meta is for SEO. Change accordingly for each page. -->
-  <meta name="title" content="Captain's Hub" />
+  <meta name="title" content="Captain's Hub Sign Up" />
   <meta name="description" content="Captains' Hub is a portal where anglers can search for the best captain that serves charter boat services to take the anglers fishing.">
-  <meta name="keywords" content="Portal,Captains,Hub,Captains' Hub, Charter Boat, Fishing, Fish, Tour Guide ">
+  <meta name="keywords" content="Portal,Captains,Hub,Captains' Hub, Charter Boat, Fishing, Fish, Tour Guide , Sign Up">
   
   
   <!-- header.php contains js,css, and favicon links and some fix meta for SEO. -->
@@ -42,7 +42,6 @@
 		
 		echo "<div class='alert alert-success'> <strong> Registration Successful! </strong> </div>";
 
-
 	}
 	
 	else{
@@ -56,7 +55,7 @@
    
    <!-- *********************************** START ADDING CONTENT ************************************************************-->
    
-   <form class="form-horizontal" action="captSignUp.php" method="POST">
+   <form class="form-horizontal" action="sign-up.php" method="POST">
   <div class="form-group">
     <label for="inputUserName" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-8">
@@ -135,6 +134,47 @@
 	   }
 	   
 	   });
+	   
+    $( "#inputUserName" ).focusout(function() {
+      var username = {
+            'inputUserName' : $('#inputUserName').val()
+            
+        }
+		
+		$.ajax({ 
+
+	//send request to search.php
+	 url: 'checkUsername.php',
+	 data: username,
+	 dataType: 'text',
+	 type: 'post',
+	  
+	  //when success
+	  success: function(data){
+		  
+		  if(data == "exist"){
+			  alert("Username already exist");
+		  }
+		  else if(data == "available"){
+			  alert("Username is available");
+		  }
+		  
+		
+		},
+		
+		//if error show error.. TO BE DELETED IN PROD AND REPLACE IT WITH ERROR PAGE!!******************************************
+	error: function(xhr, status, error) {
+		
+	  alert(xhr.responseText);
+	}
+
+	});
+		
+		
+    });
+	
+	
+	 
   </script>
   
  </body>

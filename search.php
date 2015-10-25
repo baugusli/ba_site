@@ -4,15 +4,11 @@
 include_once "class/Captain.class.php";
 include_once "class/Database.class.php";
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+ if(isset($_POST['searchZipCode']) && isset($_POST['searchWithinRange']) && !empty($_POST['searchZipCode']) && !empty($_POST['searchWithinRange'])){	
 $searchZip = $_POST['searchZipCode'];
 $searchWithinRange = $_POST['searchWithinRange'];
-}
-else{
-	
-	$searchZip = "22003";
-	$searchWithinRange = "50";
-}
 
 $api = "yYe8PVJnEAjsXdEgpQT6B5Fu5ZeEBD3aBhiqd2OSD8kAlYQKOKRqQwUVw8z8MDin";
 $url = "https://www.zipcodeapi.com/rest/". $api ."/radius.json/".$searchZip."/".$searchWithinRange."/mile";
@@ -41,17 +37,16 @@ $json_data = json_decode($json, true);
   }
   
   echo json_encode($captList);
-  /*
-    for ($a =0;$a<sizeof($captList);$a++){
-			   
-			   $captName = $captList[$a]->getFirstName() . " " . $captList[$a]->getLastName();
-			   echo $captName;
-	}
-	*/
+  
+  
+}
+else{
+	
+	echo "You are no authorized to view this page";
+}
 
 
-
-
+}
 	
 
 ?>

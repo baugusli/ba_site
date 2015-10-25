@@ -42,7 +42,7 @@
 	 <script src="../assets/rate/jquery.raty.js"></script>
 
 	<?php
-	
+	session_start();
 	include "class/Database.class.php";
 	
 	?>

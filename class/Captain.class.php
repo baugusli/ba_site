@@ -105,10 +105,29 @@
 			$captList = array();
 			while($news_row = $result->fetch_array()) {
 				$captain = new Captain();
-				  $captain -> setFirstName($news_row['first_name']);
-				  $captain -> setLastName($news_row['last_name']);
-				  $captain -> setRating($news_row['rating']);
-				   $captain -> setCaptainId($news_row['captain_id']);
+				  $captain = $captain->createCaptainObject($captain,$news_row);
+				  
+				  $captList[$counter] = $captain;
+				  $counter++;
+			}
+			
+			return $captList;
+			
+		}
+		
+		public function retrieveCaptainFromId($captain_id){
+			
+			$db = Database::getInstance();
+            $mysqli = $db->getConnection(); 
+					
+			$query = "SELECT * FROM captain WHERE captain_id = $captain_id";
+			$result = $mysqli->query($query);
+			
+			$counter = 0;
+			$captList = array();
+			while($news_row = $result->fetch_array()) {
+				$captain = new Captain();
+				  $captain = $captain->createCaptainObject($captain,$news_row);
 				  
 				  $captList[$counter] = $captain;
 				  $counter++;
@@ -130,10 +149,8 @@
 			$captList = array();
 			while($news_row = $result->fetch_array()) {
 				$captain = new Captain();
-				  $captain -> setFirstName($news_row['first_name']);
-				  $captain -> setLastName($news_row['last_name']);
-				  $captain -> setRating($news_row['rating']);
-				  $captain -> setCaptainId($news_row['captain_id']);
+				  
+				  $captain = $captain->createCaptainObject($captain,$news_row);
 				  
 				  $captList[$counter] = $captain;
 				  $counter++;
@@ -141,6 +158,57 @@
 			
 			return $captList;
 			
+		}
+		
+		public function captainAuthenticate($username, $password){
+			$db = Database::getInstance();
+			$mysqli = $db->getConnection(); 
+			$query = "SELECT * FROM captain WHERE username = '$username' AND capt_password = '$password'";
+			$result = $mysqli->query($query);
+			
+            $counter = 0;
+			$captList = array();			
+			while($news_row = $result->fetch_array()) {
+				  $captain = new Captain();
+				  $captain = $captain->createCaptainObject($captain,$news_row);
+				  
+				  $captList[$counter] = $captain;
+				  $counter++;
+			}
+			
+			return $captList;
+		}	
+		
+		public function captCheckUsername($username){
+			$db = Database::getInstance();
+			$mysqli = $db->getConnection(); 
+			$query = "SELECT captain_id FROM captain WHERE username = '$username'";
+			$result = $mysqli->query($query);
+			
+			if($result->num_rows >= 1){
+				//username exist
+				return true;
+			}
+			else{
+				
+				//username does not exist
+				return false;
+			}
+				
+			
+			
+		}
+		
+		
+		
+		private function createCaptainObject($captain,$news_row){
+			
+			      $captain -> setFirstName($news_row['first_name']);
+				  $captain -> setLastName($news_row['last_name']);
+				  $captain -> setRating($news_row['rating']);
+				  $captain -> setCaptainId($news_row['captain_id']);
+				  
+				  return $captain;
 		}
 		
 	
