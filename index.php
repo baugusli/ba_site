@@ -154,7 +154,7 @@
    
 
     <div class="container">
-      <!-- Example row of columns -->
+      
       <div class="row" id="captRow">
 	    
 		<?php
@@ -171,7 +171,7 @@
 			   $captId = $captList[$i]->getCaptainId();
 	    ?>
 		
-			   <div class="col-xs-6 col-sm-4 col-md-3 captClass">
+		<div class="col-xs-6 col-sm-4 col-md-3 captClass">
             <div class="thumbnail">
              <img src="assets/images/captainsTest.jpg" alt="...">
                <div class="caption">
@@ -294,7 +294,8 @@ $.ajax({
 	//if error show error.. TO BE DELETED IN PROD AND REPLACE IT WITH ERROR PAGE!!******************************************
 error: function(xhr, status, error) {
 	
-  alert(xhr.responseText);
+  //alert(xhr.responseText);
+  searchFailedMessage();
 }
 
 });
@@ -337,6 +338,21 @@ function populateHomePage(data){
 			   $("#captRow").append(captain);
 			   
 	 }
+}
+
+function searchFailedMessage(){
+	 $("#captRow").empty();
+			   
+			  captain = "<div class='col-xs-12 col-sm-12 col-md-12 captClass'>" +
+                         "No Captain is found. Please widen the search criteria."
+						 "</div>";
+		 
+		      
+			  //append the divs to the row with id captRow
+			   $("#captRow").append(captain);
+			   
+	 
+	
 }
 
 

@@ -77,10 +77,12 @@
 		//TRY EXTENDING THE CLASS TO DB
 		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$rating){
 			
+			$formatted_firstName = ucwords(strtolower($firstName));
+			$formatted_lastName = ucwords(strtolower($lastName));
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`, `rating`) VALUES ('$username', '$password', '$firstName', '$lastName', $zip,$rating)";
+			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`, `rating`) VALUES ('$username', '$password', '$formatted_firstName', '$formatted_lastName', $zip,$rating)";
 			if(!$mysqli->query($query)){
 				 echo mysql_error();
 				die('ERROR!');

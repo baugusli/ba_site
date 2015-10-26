@@ -19,14 +19,19 @@ $json_data = json_decode($json, true);
    
   $searchResultCaptList = array();
   $captList = array();
+  
   $captain = new Captain();
   $captListCounter = 0;
+  
+  //Get json data length
   $jsonSize = max(array_map('count', $json_data));
   
   for ($i = 0; $i< $jsonSize; $i++){
 	  
+	  //Get zip code from 3 dimensional array
 	  $zip = $json_data['zip_codes'][$i]['zip_code'];
 	 
+	 //To captain.class.php to select captain with the zip codes.
       $searchResultCaptList = $captain->searchCaptain($zip);
  	 
 	  for ($o = 0; $o < sizeof($searchResultCaptList); $o++){
