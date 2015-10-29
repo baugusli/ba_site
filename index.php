@@ -327,8 +327,9 @@ function populateHomePage(data){
 							   "<div class='caption'>" +
 								 "<h3>"+ fullName + "</h3>" +
 								   "<div id='captRate' class='captRate' data-score='"+ rating +"'></div>" +
-								   "<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p> " +
-								   "<p><a href='#' class='btn btn-primary' role='button'>Book Now</a> </p>" +
+								   "<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p><p> " +
+								   "<a href='captain.php?captainId="+captain_id+"' class='btn btn-primary' role='button'>View Captain</a>" +
+								   "<a href='#' class='btn btn-primary' role='button'>Book Now</a> </p>" +
 							   "</div>" +
 							"</div>" +
 						 "</div>";
