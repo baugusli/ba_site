@@ -8,8 +8,12 @@
 		public $password;
 		public $firstName;
 		public $lastName;
+		public $street;
+		public $city;
+		public $state;
 		public $zip;
 		public $rating;
+		
 		
 	
 		public function __construct(){
@@ -54,6 +58,30 @@
 			$this->lastName = $lastName;
 		}
 		
+		public function getStreet(){
+			return $this->street;
+		}
+		
+		public function setStreet($street){
+			$this->street = $street;
+		}
+		
+		public function getCity(){
+			return $this->city;
+		}
+		
+		public function setCity($city){
+			$this->city = $city;
+		}
+		
+		public function getState(){
+			return $this->state;
+		}
+		
+		public function setState($state){
+			$this->state = $state;
+		}
+			
 		public function getZip(){
 			return $this->zip;
 		}
@@ -75,17 +103,17 @@
 		
 		
 		//TRY EXTENDING THE CLASS TO DB
-		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$rating){
+		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$rating,$street,$city,$state){
 			
 			$formatted_firstName = ucwords(strtolower($firstName));
 			$formatted_lastName = ucwords(strtolower($lastName));
 			$db = Database::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`, `rating`) VALUES ('$username', '$password', '$formatted_firstName', '$formatted_lastName', $zip,$rating)";
+			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`, `rating`,`street`,`city`,`state`) VALUES ('$username', '$password', '$formatted_firstName', '$formatted_lastName', $zip,$rating,'$street','$city','$state')";
 			if(!$mysqli->query($query)){
-				 echo mysql_error();
-				die('ERROR!');
+				 return false;
+				
 			}
 			else{
 				
@@ -116,6 +144,29 @@
 			return $captList;
 			
 		}
+		
+		public function retrieveCaptainProfile($captain_id){
+			
+			$db = Database::getInstance();
+            $mysqli = $db->getConnection(); 
+					
+			$query = "SELECT * FROM captain WHERE captain_id = $captain_id";
+			$result = $mysqli->query($query);
+			
+			$counter = 0;
+			$captList = array();
+			while($news_row = $result->fetch_array()) {
+				$captain = new Captain();
+				  $captain = $captain->createCaptainObject($captain,$news_row);
+				  
+				  $captList[$counter] = $captain;
+				  $counter++;
+			}
+			
+			return $captList;
+			
+		}
+		
 		
 		public function retrieveCaptainFromId($captain_id){
 			
@@ -208,6 +259,10 @@
 			      $captain -> setFirstName($news_row['first_name']);
 				  $captain -> setLastName($news_row['last_name']);
 				  $captain -> setRating($news_row['rating']);
+				  $captain -> setStreet($news_row['street']);
+				  $captain -> setCity($news_row['city']);
+				  $captain -> setState($news_row['state']);
+				  $captain -> setZip($news_row['zip']);
 				  $captain -> setCaptainId($news_row['captain_id']);
 				  
 				  return $captain;

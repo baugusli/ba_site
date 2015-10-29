@@ -5,10 +5,10 @@
 class Database {
 	private $_connection;
 	private static $_instance; //The single instance
-	private $_host = "50.62.209.79";
-	private $_username = "poliang";
-	private $_password = "digital13";
-	private $_database = "HookedOnIT";
+	private $_host = "localhost";
+	private $_username = "root";
+	private $_password = "j2NY6hXqLlba";
+	private $_database = "test";
 	/*
 	Get an instance of the Database
 	@return Instance

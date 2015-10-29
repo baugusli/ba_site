@@ -41,7 +41,7 @@
 				$captName = $captDetail[0]->getFirstName() . " " . $captDetail[0]->getLastName();
 		?>
 		   <form class="navbar-form navbar-right" action="logout.php" method="POST">
-		    <label for="welcomeUserName" id="welcomeUserName">Welcome <?php echo $captName;?></label>
+		    <label for="welcomeUserName" id="welcomeUserName">Welcome, <?php echo $captName;?></label>
             <button type="submit" class="btn btn-success">Logout</button>
           </form>	
 				

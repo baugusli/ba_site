@@ -36,6 +36,7 @@
 	 
 	 <!-- Mght be a prob?-->
 	 <script type="text/javascript" src="../assets/js/bootstrap-filestyle.min.js"> </script>
+	 <script src="../assets/js/validator.js"></script>
 	 
 	 
 	 <link href="../assets/rate/jquery.raty.css" rel="stylesheet">
