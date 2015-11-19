@@ -26,12 +26,15 @@
    <!-- navigation folder stores the dynamic navigation bar. If user logn, it will retrieve different nav bar (Capt / User nav). -->
    <?php
     include "navigation/guestNav.php";
-	
+	ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
 	include_once "class/Captain.class.php";
-	
+	include_once "class/DatabaseBook.class.php";
 	$username = $_POST['inputUserName'];
-	$pwd = md5($_POST['inputPassword']);
+	$pwd = $_POST['inputPassword'];
 	$fname = $_POST['inputFirstName'];
 	$lname = $_POST['inputLastName'];
 	$street = $_POST['inputAddress'];
@@ -39,9 +42,11 @@
 	$state = $_POST['inputState'];
 	$zip = $_POST['inputZip'];
 	$email = $_POST['inputEmail'];
+	$phone = $_POST['inputPhone'];
+	$mobile = $_POST['inputMobile'];
 	
 	$captain = new Captain();
-	if($captain->registerCaptain($username,$pwd,$fname,$lname,$zip,$street,$city,$state,$email)){
+	if($captain->registerCaptain($username,$pwd,$fname,$lname,$zip,$street,$city,$state,$email,$phone,$mobile)){
 		
 		echo "<div class='container'><div class='col-md-12'><div class='alert alert-success'> <strong> Registration Successful! </strong> </div></div></div>";
        
@@ -220,7 +225,25 @@
   <div class="form-group has-feedback">
     <label for="inputZip" class="col-sm-2 control-label">Zip:</label>
     <div class="col-sm-8">
-      <input type="number" class="form-control" id="inputZip" name="inputZip" placeholder="Zip Code" data-minlength="5" data-maxlength="5" data-error="Please enter your 5 digit Zip Code" required>
+      <input type="text" class="form-control" id="inputZip" name="inputZip" placeholder="Zip Code" data-minlength="5" data-maxlength="5" data-error="Please enter your 5 digit Zip Code" required>
+	  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+	 <div class="help-block with-errors"></div>
+  </div>
+  
+  <div class="form-group has-feedback">
+    <label for="inputPhone" class="col-sm-2 control-label">Phone Number:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Phone Number" required>
+	  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+	 <div class="help-block with-errors"></div>
+  </div>
+  
+  <div class="form-group has-feedback">
+    <label for="inputMobile" class="col-sm-2 control-label">Mobile Number:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="inputMobile" name="inputMobile" placeholder="Mobile Number">
 	  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     </div>
 	 <div class="help-block with-errors"></div>

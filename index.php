@@ -177,7 +177,7 @@
                  <h3><?php echo $captName; ?></h3>
 				   <div id="captRate" class="captRate" data-score="<?php if($captId == 81){echo "5";}else{echo $score;}?>"></div>
                    <p><?php echo $captLocation;?></p>
-                   <p><a href="captain.php?captainId=<?php echo $captId;  ?>" class="btn btn-primary" role="button">View Captain</a> <a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
+                   <p><a href="captain.php?captainId=<?php echo $captId;  ?>" class="btn btn-primary" role="button">View Captain</a> <a href="bookme/index.php?captainId=<?php echo $captId; ?>" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
          </div>

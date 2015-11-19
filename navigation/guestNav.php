@@ -8,6 +8,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php">Captain's Hub</a>
+	  <a class="col-xs-6 col-md-4 col-lg-2 vcenter" href="index.php"><img src="/bookme/assets/images/boat_icon_white.png" height="48" width="48"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 		

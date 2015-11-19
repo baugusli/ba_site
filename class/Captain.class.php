@@ -122,22 +122,43 @@
 		
 		
 		//TRY EXTENDING THE CLASS TO DB
-		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$street,$city,$state,$email){
+		public function registerCaptain($username, $password, $firstName, $lastName,$zip,$street,$city,$state,$email,$phone,$mobile){
 			
 			$formatted_firstName = ucwords(strtolower($firstName));
 			$formatted_lastName = ucwords(strtolower($lastName));
 			
-			$db = Database::getInstance();
+			$captain = new Captain();
+			
+			$salt = $captain->generate_salt();
+			$hash = $captain->hash_password($salt,$password);
+			$db = DatabaseBook::getInstance();
             $mysqli = $db->getConnection(); 
 					
-			$query = "INSERT INTO captain(`username`, `capt_password`, `first_name`, `last_name`, `zip`,`street`,`city`,`state`,`email`,`captain_pic`) VALUES ('$username', '$password', '$formatted_firstName', '$formatted_lastName', $zip,'$street','$city','$state','$email','assets/images/default/profile-default.png')";
+			$query = "INSERT INTO ea_users(`first_name`, `last_name`, `zip_code`,`address`,`city`,`state`,`email`,`captain_pic`,`phone_number`,`mobile_number`,`id_roles`) VALUES ('$formatted_firstName', '$formatted_lastName', '$zip','$street','$city','$state','$email','assets/images/default/profile-default.png','$phone','$mobile',2)";
+
 			if(!$mysqli->query($query)){
-				 return false;
+				
+			
+					 return false;
+					 
+			
+				
+				
 				
 			}
 			else{
 				
-				return true;
+				$query = "INSERT INTO ea_user_settings(`id_users`,`username`,`password`,`salt`) VALUES (LAST_INSERT_ID(),'$username','$hash','$salt')";
+				if(!$mysqli->query($query)){
+					
+					 return false;
+					 
+				}
+				else{
+					return true;
+				}
+				
+				
 			}
 			
 			return false;
@@ -332,8 +353,42 @@
 			return false;
 		}
 		
+		/**
+		 * Generate a new password salt.
+		 * 
+		 * This method will not check if the salt is unique in database. This must be done 
+		 * from the calling procedure.
+		 * 
+		 * @return string Returns a salt string.
+		 */
+		private function generate_salt() {
+			$max_length = 100;
+			$salt = hash('sha256', (uniqid(rand(), true)));
+			return substr($salt, 0, $max_length);
+		}
 		
-		
+		/**
+		 * Generate a hash of password string.
+		 * 
+		 * For user security, all system passwords are stored in hash string into the database. Use
+		 * this method to produce the hashed password. 
+		 * 
+		 * @param string $salt Salt value for current user. This value is stored on the database and 
+		 * is used when generating the password hash.
+		 * @param string $password Given string password.
+		 * @return string Returns the hash string of the given password.
+		 */
+		private function hash_password($salt, $password) {
+			$half = (int)(strlen($salt) / 2);
+			$hash = hash('sha256', substr($salt, 0, $half ) . $password . substr($salt, $half));
+
+			for ($i = 0; $i < 100000; $i++) {
+				$hash = hash('sha256', $hash);
+			}
+
+			return $hash;
+		}
+				
 		private function createCaptainObject($captain,$news_row){
 			
 			      $captain -> setFirstName($news_row['first_name']);
