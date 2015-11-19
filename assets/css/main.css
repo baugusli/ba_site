@@ -30,7 +30,7 @@ body.loading .loadingPage {
 }
 
 .jumbotronImg{
-     background: url("../images/boatPov.jpg") no-repeat center center; 
+     background: url("../images/bckg.jpg") no-repeat center center; 
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -42,8 +42,7 @@ body.loading .loadingPage {
 
 .row-5-gutter{
     margin-left: -5px;
-    margin-right: -5px;
-	
+    margin-right: -5px;	
 	border:1px solid #012C57;
 	
 	/*
@@ -85,5 +84,20 @@ color: #FDBA13;
 
 .logoMain a:hover{
 color: #FDBA13;
+}
+
+#dialog-confirm{
+display:none;
+}
+
+.center{
+text-align:center;
+}
+
+.thumbnail-img{
+max-width:242px;
+min-width:242px;
+max-height:200px;
+min-height:200px;
 }
 

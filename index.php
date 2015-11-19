@@ -36,7 +36,7 @@
 
 <!-- SEARCH ************************* -->
 	  
-	    <div class="row row-5-gutter">
+	    <div class="row">
 	  <!-- Search Form -->
        <form class="form-inline" id="searchForm" method="post" action="search.php">	  
 		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
@@ -85,7 +85,7 @@
 			 </div>
 		</div>	 
 		  
-		  <div class="col-sm-12 col-md-2 col-5-gutter" >
+		  <div class="col-sm-12 col-md-4 col-5-gutter" >
              <div class="input-group"> 
 			    <div class="input-group-addon">
 			       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -103,45 +103,38 @@
 	  
 			 
 			 </div>
+			 <button type="submit" class="btn btn-primary">Search</button>
 		 </div>	 
 		 
-		  <div class="col-sm-12 col-md-2 col-5-gutter" >
-		     <div class="input-group"> 
-			
-			   <button type="submit" class="btn btn-primary">Search</button>
-			 </div>
-			 
-		</div>
+		
 			
 
 
 		 </form>
 		 
+		 
+		 
+		 
 		</div>	
+		</br>
+		<div class="row">
 		
-		<!-- FILTER **************** -->
-		 <div class="row row-5-gutter">
-	  <!-- Search Form -->
-       <form class="form-inline" id="filterForm">	  
-		  <div class="col-sm-12 col-md-2 col-5-gutter" > 
+		  <form class="form-inline" id="filterForm">	  
+		  <div class="col-sm-12 col-md-12" > 
 		    
 		     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter</button>
-			 
-		  </div>
-		 	  
-		  <div class="col-sm-12 col-md-8 col-5-gutter" >
-		     <div class="form-group">
-			   <label for="filterRating" class="col-sm-2 control-label">Captain's Rating</label>
+			 <div class="form-group">
+			   <label for="filterRating" class="control-label">by Captain's Rating</label>
 			 </div>
 			   
 			   <div class="form-control" id="filterRatingOption"> </div> & up
-        
-	  		 
-		 </div>	 	
+		  </div>
+			
 
 		 </form>
-		 
-		</div>	
+		</div>
+		
+		
 		
 		
 		<!-- END************************* -->
@@ -157,9 +150,12 @@
       
       <div class="row" id="captRow">
 	    
+		
 		<?php
 		if($_SERVER['REQUEST_METHOD'] != 'POST'){ 
 		include_once "class/Captain.class.php";
+		include_once "class/Rating.class.php";
+		
 		$captList = array();
 		$captain = new Captain();
 		$captList = $captain->retrieveCaptain();
@@ -167,17 +163,20 @@
 		   for ($i =0;$i<sizeof($captList);$i++){
 			   
 			   $captName = $captList[$i]->getFirstName() . " " . $captList[$i]->getLastName();
-			   $rating = $captList[$i]->getRating();
+			  $captPic = $captList[$i]->getCaptainPic();
 			   $captId = $captList[$i]->getCaptainId();
+			   $captLocation = $captList[$i]->getCity() . ", " . $captList[$i]->getState() . " ". $captList[$i]->getZip();
+			   $rating = new Rating();
+			   $score = $rating->retrieveAvgScore($captId);
 	    ?>
 		
 		<div class="col-xs-6 col-sm-4 col-md-3 captClass">
-            <div class="thumbnail">
-             <img src="assets/images/captainsTest.jpg" alt="...">
+            <div class="thumbnail tb">
+             <img class="thumbnail-img img-thumbnail" src="<?php echo $captPic;?>" alt="...">
                <div class="caption">
                  <h3><?php echo $captName; ?></h3>
-				   <div id="captRate" class="captRate" data-score="<?php echo $rating; ?>"></div>
-                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+				   <div id="captRate" class="captRate" data-score="<?php if($captId == 81){echo "5";}else{echo $score;}?>"></div>
+                   <p><?php echo $captLocation;?></p>
                    <p><a href="captain.php?captainId=<?php echo $captId;  ?>" class="btn btn-primary" role="button">View Captain</a> <a href="#" class="btn btn-primary" role="button">Book Now</a> </p>
                </div>
             </div>
@@ -190,7 +189,7 @@
 
       </div>
 
-      <hr>
+      
 
       
 	   <?php
@@ -311,23 +310,26 @@ function populateHomePage(data){
      var fullName = "";
 	 var captain = "";
 	 var rating = "";
+	 var captPic ="";
+	 var location = "";
 	 $("#captRow").empty();
 	 for (var i = 0;i<data.length;i++){
 			   captain_id = data[i]['captain_id'];
 			   firstName = data[i]['firstName'];
 			   secondName = data[i]['lastName'];
-			   
+			   captPic = data[i]['captain_pic'];
 			   fullName = firstName + " " + secondName;
+			   location = data[i]['city'] + ", " + data[i]['state'] + " " + data[i]['zip'];
 			   
-			   rating = data[i]['rating'];
+			   rating = data[i]['score'];
 			   
 			  captain = "<div class='col-xs-6 col-sm-4 col-md-3 captClass'>" +
-                         " <div class='thumbnail'>" +
-							 "<img src='assets/images/captainsTest.jpg' alt='...'>" +
+                         " <div class='thumbnail tb'>" +
+							 "<img class='thumbnail-img img-thumbnail' src='"+captPic+"' alt='...'>" +
 							   "<div class='caption'>" +
 								 "<h3>"+ fullName + "</h3>" +
 								   "<div id='captRate' class='captRate' data-score='"+ rating +"'></div>" +
-								   "<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p><p> " +
+								   "<p>"+ location +"</p><p> " +
 								   "<a href='captain.php?captainId="+captain_id+"' class='btn btn-primary' role='button'>View Captain</a>" +
 								   "<a href='#' class='btn btn-primary' role='button'>Book Now</a> </p>" +
 							   "</div>" +

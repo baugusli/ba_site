@@ -27,8 +27,10 @@
    <?php
     include "navigation/guestNav.php";
 	
+	echo "<div class='container'>  ";
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
 	include_once "class/Captain.class.php";
+	include_once "class/User.class.php";
 	
 	$username = $_POST['loginUsername'];
 	$pwd = md5($_POST['loginPassword']);
@@ -39,7 +41,30 @@
 	
 	if(count($captList) == 0) {
 		
-		echo "<div class='alert alert-danger'> <strong> Login Failed! </strong> </div>";
+		$user = new User();
+		$userList = array();
+		$userList = $user->userAuthenticate($username,$pwd);
+		
+		if(count($userList) == 0){
+			echo "<div class='alert alert-danger'> <strong> Login Failed! </strong> </div>";
+			
+		}
+		
+		elseif(count($userList) == 1){
+			
+			$_SESSION["userId"] = $userList[0]->getUserId();
+		$_SESSION["userType"] = "Customer";
+	   	$host  = $_SERVER['HTTP_HOST'];
+       $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $extra = 'index.php';
+		$url = "http://".$host.$uri."/".$extra;
+		echo "<script>location.href='".$url."'</script>";
+        exit;
+			
+			
+		}
+		
+		
 	}
 	
 	elseif(count($captList) == 1){
@@ -62,7 +87,7 @@
    ?>	
    
    <!-- *********************************** START ADDING CONTENT ************************************************************-->
-   
+ 
    <form class="form-horizontal" action="login.php" method="POST">
   <div class="form-group">
     <label for="loginUsername" class="col-sm-2 control-label">Username</label>
@@ -85,14 +110,16 @@
    
 </form>
 
+  <?php
+  include_once "footer/footer.php";
+  ?>
+</div>
     
     <!-- *********************************** END ADDING CONTENT ************************************************************-->
 
    
 	
-  <?php
-  include_once "footer/footer.php";
-  ?>
+
   
  </body>
 </html>

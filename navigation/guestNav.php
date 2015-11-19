@@ -13,7 +13,7 @@
 		
 		<?php
 		//For guest*****************************************************************8
-		if(!isset($_SESSION['userType']) && !isset($_SESSION['captId'])){
+		if(!isset($_SESSION['userType']) && !isset($_SESSION['userId'])){
 		?>
           <form class="navbar-form navbar-right" action="login.php" method="POST">
             <div class="form-group">
@@ -28,20 +28,26 @@
 		<?php
 		}
 		elseif(isset($_SESSION['userType']) && isset($_SESSION['userId']) && !empty($_SESSION['userType']) && !empty($_SESSION['userId'])){
-			include_once "class/Captain.class.php";
+			
+			
 			$userType = $_SESSION['userType'];
 			$userId = $_SESSION['userId'];
 			
 			//Navigation bar for Captain *******************************************
 			if($userType == "Captain"){
-				
+				include_once "class/Captain.class.php";
 				$captain = new Captain();
 				$captDetail = array();
 				$captDetail = $captain->retrieveCaptainFromId($userId);
 				$captName = $captDetail[0]->getFirstName() . " " . $captDetail[0]->getLastName();
 		?>
 		   <form class="navbar-form navbar-right" action="logout.php" method="POST">
-		    <label for="welcomeUserName" id="welcomeUserName">Welcome, <?php echo $captName;?></label>
+		   <!--<a href="captain-boat.php"> My Boats</a>-->
+		    <!--<a href="appointment.php"> My Appointments</a>-->
+			<label for="welcomeUserName" id="welcomeUserName">Welcome, <?php echo $captName;?></label>
+			<a class="btn btn-info" href="bookme/backend"> My Appointments</a>
+			<a class=" btn btn-info" href="captain.php"> My Profile</a>
+		    
             <button type="submit" class="btn btn-success">Logout</button>
           </form>	
 				
@@ -50,9 +56,18 @@
 			
 			//Navigation bar for Customer **********************************************
 			elseif($userType == "Customer"){
+				include_once "class/User.class.php";
+				$user = new User();
+				$userDetail = array();
+				$userDetail = $user->retrieveUserFromId($userId);
+				$userName = $userDetail[0]->getFirstName() . " " . $userDetail[0]->getLastName();
 				
 		 ?>
+		 
 		   <form class="navbar-form navbar-right" action="logout.php" method="POST">
+		    <label for="welcomeUserName" id="welcomeUserName">Welcome, <?php echo $userName;?></label>
+		     <a class="btn btn-info" href="appointment.php"> My Appointments</a>
+		    
             <button type="submit" class="btn btn-success">Logout</button>
           </form>	
 				

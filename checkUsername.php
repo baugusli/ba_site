@@ -2,6 +2,7 @@
 
 
 include_once "class/Captain.class.php";
+include_once "class/User.class.php";
 include_once "class/Database.class.php";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -10,14 +11,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 $inputUserName = $_POST['inputUserName'];
    
   $captain = new Captain();
-	 
+  $user = new User();
+  
       $exist = $captain->captCheckUsername($inputUserName);
  	 
 	 if($exist){
 		 echo "exist";
 	 }
 	 else{
-		 echo "available";
+		 
+		 $exist = $user->userCheckUsername($inputUserName);
+		 
+		 if($exist){
+			 echo "exist";
+		 }
+		 
+		 else{
+			 
+			 echo "available";
+		 }
 	 }
   
   

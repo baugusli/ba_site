@@ -1,5 +1,9 @@
 <?php
 
+  
+  ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include_once "class/Captain.class.php";
 include_once "class/Database.class.php";
@@ -9,6 +13,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
  if(isset($_POST['searchZipCode']) && isset($_POST['searchWithinRange']) && !empty($_POST['searchZipCode']) && !empty($_POST['searchWithinRange'])){	
 $searchZip = $_POST['searchZipCode'];
 $searchWithinRange = $_POST['searchWithinRange'];
+
+
 
 $api = "yYe8PVJnEAjsXdEgpQT6B5Fu5ZeEBD3aBhiqd2OSD8kAlYQKOKRqQwUVw8z8MDin";
 $url = "https://www.zipcodeapi.com/rest/". $api ."/radius.json/".$searchZip."/".$searchWithinRange."/mile";
@@ -34,13 +40,16 @@ $json_data = json_decode($json, true);
 	 //To captain.class.php to select captain with the zip codes.
       $searchResultCaptList = $captain->searchCaptain($zip);
  	 
+
+	 
 	  for ($o = 0; $o < sizeof($searchResultCaptList); $o++){
 		  $captList[$captListCounter] = $searchResultCaptList[$o];
 		  $captListCounter++;
 		  
 	  }
   }
-  
+
+
   echo json_encode($captList);
   
   
@@ -51,7 +60,7 @@ else{
 }
 
 
-}
+ }
 	
 
 ?>

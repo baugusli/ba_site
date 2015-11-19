@@ -7,10 +7,10 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+       // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+      //  echo "File is not an image.";
         $uploadOk = 0;
     }
 }
@@ -36,11 +36,24 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
-
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    session_start();
+	$fileName = basename($_FILES["fileToUpload"]["name"]);
+	$_SESSION["fileName"] = $fileName;
+  
+    //Redirect to appointment Page
+		 $host  = $_SERVER['HTTP_HOST'];
+         $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $extra = 'captain-upload-pic.php';
+		$url = "http://".$host.$uri."/".$extra;
+		echo "<script>location.href='".$url."'</script>";
+        exit;
+  
+  
+   //Redirect to appointment Page
+		
+        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+       // echo "Sorry, there was an error uploading your file.";
     }
 }
 
