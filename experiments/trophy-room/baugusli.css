@@ -1,0 +1,916 @@
+body {
+padding:0px;
+margin:0px;
+background: #393a3f;
+}
+
+div{
+display:none;
+}
+
+#mainWrapper{
+position:absolute;
+z-index:1;
+top:140px;
+}
+
+main{
+position:absolute;
+width:70%;
+margin-left:13%;
+
+}
+
+#myPhotoHome{
+display:none;
+
+}
+
+#indexIntro{
+position:relative;
+float:left;
+background:#777;
+left:39%;
+bottom:40px;
+
+padding: 13px 20px 20px 20px;
+
+font-family: ubuntuL;
+
+font-size:24px;
+
+border: 2px solid #black;
+
+
+}
+
+#indexIntro span{
+font-family: ARB;
+font-weight:thin;
+color:#3E414E;
+font-size:33px;
+}
+
+#logoHeader #indexIntro:hover{
+color:black;
+background:#777;
+cursor:default;
+}
+
+
+/*Logo Header Wrapper*/
+#logoHeader{
+position: absolute;
+z-index : 1;
+padding-top:16px;
+}
+
+/*AR BERKLEY Font*/
+@font-face{
+
+   font-family: ARB;
+   src: url(assets/font/ARBERKLEY.ttf);
+}
+
+/*The header frame*/
+#logo, #projectNav, #resumeNav, #aboutMeNav, #contactMeNav{
+
+
+background-color: #3E414E;
+
+border: 2px solid #DFD9BB;
+
+/*Font */
+
+font-weight:lighter;
+color:white;
+text-align: center;
+
+}
+
+#logo{
+/*Box Positioning*/
+margin-left: 13%;
+
+max-width:250px;
+width:20%;
+min-width:200px;
+
+
+max-height: 50px;
+
+position:relative;
+
+padding-top:2px;
+padding-bottom:10px;
+
+font-family: ARB, Palatino Linotype, Vernada, Arial, San-serif;
+
+
+}
+/*Spawn two pseudo element for the shadow only*/
+#logo:before, #logo:after{
+
+z-index: -1;
+position:absolute;
+bottom:13px;
+content:"a";
+
+max-width:250px;
+width:20%;
+min-width:150px;
+
+background: rgba(0,0,0,0);
+
+-webkit-box-shadow: 0px 13px 5px black;
+-moz-box-shadow: 0px 13px 5px black;
+box-shadow: 0px 13px 5px black;
+
+}
+#logo:before{
+-webkit-transform: rotate(-4deg);
+-moz-transform: rotate(-4deg);
+-o-transform: rotate(-4deg);
+-ms-transform: rotate(-4deg);
+transform:rotate(-4deg);
+
+right: auto;
+left: 10px;
+}
+#logo:after{
+-webkit-transform: rotate(4deg);
+-moz-transform: rotate(4deg);
+-o-transform: rotate(4deg);
+-ms-transform: rotate(4deg);
+transform:rotate(4deg);
+
+right: 10px;
+left: auto;
+}
+
+/*LOGO Frame mouseover  background-color:#908262;*/
+#logoHeader div:hover{
+background-color:#777;
+color:#3E414E;
+cursor:pointer;
+}
+
+
+
+/*Header Navigations*/
+#projectNav, #resumeNav, #aboutMeNav, #contactMeNav{
+position:absolute;
+ width:8.5%;
+ left:44%;
+ bottom:10px;
+ font-family: Lato,  Palatino Linotype, Vernada, Arial, San-serif;
+font-size:18px;
+/*VIEWPORT MEASUREMENT = 1.3vw*/
+padding-bottom:5px;
+
+box-shadow: 0 1px 4px rgba(0,0,0,0.3), 00 40px rgba(0,0,0,0.1) inset;
+}
+
+#resumeNav{
+left:54%;
+
+}
+
+/**Headers shadow boxes */
+#indexIntro:before, #indexIntro:after, #projectNav:before, #projectNav:after, #resumeNav:before, #resumeNav:after, #aboutMeNav:before, #aboutMeNav:after, #contactMeNav:before, #contactMeNav:after
+
+{
+width:70%;
+left:5px;
+height:75%;
+content:"ss";
+position:absolute;
+z-index:-1;
+
+-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.6);
+-moz-box-shadow: 0 0 20px rgba(0,0,0,0.6);
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+border-radius:100px / 10px;
+
+top:10px;
+}
+#indexIntro:before, #indexIntro:after{
+top:15px;
+
+left:13px;
+width:90%;
+
+-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.6);
+-moz-box-shadow: 0 0 20px rgba(0,0,0,0.6);
+box-shadow:0 0 20px rgba(0,0,0,1);
+}
+#projectNav:after, #resumeNav:after, #aboutMeNav:after,#contactMeNav:after
+{
+left:auto;
+right:5px;
+transform:skew(8deg) rotate(3deg);
+}
+
+
+#aboutMeNav{
+left:64%;
+}
+#contactMeNav{
+left:74%;
+}
+
+/*Canvass ---------------------------*/
+#roomCanvas{
+position: relative;
+
+}
+
+/*Project -----------------------------------------------------------------------------------*/
+#projectMain div{
+position:relative;
+  width:48%;
+  height:370px;
+  
+}
+
+#SSO, #AlumniPortal, #IT207 {
+
+margin-bottom:40px;
+}
+
+@font-face{
+
+font-family:franch;
+
+src: url("assets/font/Franchise-Free-Bold.ttf");
+}
+
+#projectMain .projectTitle, #specProject .projectTitle{
+position:relative;
+float:left;
+width:45%;
+height:30px;
+background-color:#01B6AD; 
+
+font-family: ubuntuL,Arial,Verdana,Sans-serif;
+font-size: 25px;
+font-weight:thick;
+padding: 11px 0px 10px 0px;
+text-align:center;
+}
+
+.projectTitle:before, .projectTitle:after, .phpTag:before,.phpTag:after{
+width:70%;
+left:15%;
+height:75%;
+content:"ss";
+position:absolute;
+z-index:-1;
+
+-webkit-box-shadow: 0 0 20px rgba(0,0,0,1);
+-moz-box-shadow: 0 0 20px rgba(0,0,0,1);
+box-shadow:0 0 20px rgba(0,0,0,1);
+border-radius:100px / 10px;
+
+top:10px;
+}
+
+.phpTag:before, .phpTag:after{
+height:60%;
+top:14px;
+}
+
+
+
+#projectMain .phpTag{
+position:relative;
+float:left;
+right:36%;
+width:14%;
+background-color:#B6C0D2;
+height:30px;
+padding: 11px 0px 10px 0px;
+
+text-align:center;
+font-size: 30px;
+font-family: franch;
+}
+
+#projectMain div:nth-child(odd){
+float:left;
+}
+
+
+#projectMain div:nth-child(even){
+
+float:right;
+}
+
+
+
+
+#projectMain img{
+width:100%;
+height:300px;
+margin-top:15px;
+
+-webkit-box-shadow: -6px 6px 20px 1px #1c1c1c;
+-moz-box-shadow: -6px 6px 20px 1px #1c1c1c;
+box-shadow: 0px 6px 20px 1px #1c1c1c;
+
+opacity:0.90;
+}
+
+#projectMain img:hover{
+
+opacity:1;
+cursor:pointer;
+}
+
+/*Specific Project page ------------------------------------------------*/
+#specProject .projectTitle {
+
+width:40%;
+height:40px;
+margin-left:30%;
+margin-bottom:20px;
+
+}
+
+
+#specImg {
+
+-webkit-box-shadow: -6px 6px 20px 1px #1c1c1c;
+-moz-box-shadow: -6px 6px 20px 1px #1c1c1c;
+box-shadow: 0px 6px 20px 1px #1c1c1c;
+}
+
+#projectTopImg{
+width:70%;
+margin-left:auto;
+margin-right:auto;
+}
+
+#projectTopImg img{
+width:100%;
+height:400px;
+}
+
+#specProject div{
+position:relative;
+
+margin-bottom:40px;
+
+font-family: ubuntuL,San-serif;
+font-size:20px;
+
+padding-left:20px;
+padding-right:20px;
+padding-bottom:10px;
+padding-top:15px;
+}
+#specProject div:first-child{
+padding:0px;
+}
+
+#specProject div span{
+font-family: silentReaction,Sans-serif;
+font-size: 50px;
+}
+
+#specRedirectButton{
+background:#2B1B17;
+position:absolute;
+bottom:45px;
+z-index:1;
+width:20%;
+height:50px;
+border-radius:10px;
+border: none;
+color:white;
+font-family:ubuntuL;
+font-size:20px;
+font-weight:bold;
+opacity:0.8;
+left:40%;
+}
+
+#specRedirectButton:hover {
+opacity:1;
+cursor:pointer;
+}
+
+
+#projectOverview{
+
+width:100%;
+float:left;
+background:#CC7946;
+
+box-shadow : 0px 4px 10px 1px rgba(0,0,0,0.3);
+
+}
+
+#projectFunctions{
+
+width:100%;
+float:left;
+background:#61378C;
+
+box-shadow : 0px 4px 10px 1px rgba(0,0,0,0.3);
+}
+
+#projectFunctions li{
+padding-bottom:4px;
+padding-top:4px;
+}
+
+
+#resumePaper{
+
+position:relative;
+font-family: times new roman,verdana,arial, sans-serif;
+
+box-shadow: 0px 0px 10px 6px rgba(0,0,0,0.3);
+
+background: #F8F8F8;
+
+margin-top:20px;
+
+font-family:ubuntuL;
+
+line-height:120%;
+}
+
+#resumePaper a{
+color:black;
+text-decoration:underline;
+}
+
+#resumePaper a:hover{
+color:black;
+text-decoration:underline;
+}
+
+#resumePaper a:visited{
+color:black;
+text-decoration:underline;
+}
+
+#resumePaper #paperHeader{
+padding-top:30px;
+text-align:center;
+}
+
+#resumePaper #paperHeader span{
+font-weight:bold;
+font-size:25px;
+}
+
+#resumePaper #paperBody {
+padding-bottom:15px;
+
+}
+
+#resumePaper #paperBody div{
+margin-left:5%;
+padding-bottom:14px;
+}
+
+#resumePaper #paperBody h3{
+margin-left:2%;
+}
+
+#resumePaper #paperBody div span{
+font-weight:bold;
+}
+
+/*About Me----------------------------------------*/
+
+/*Silent Reaction by Jonathan S.Harris http://www.1001freefonts.com/silent_reaction.font*/
+@font-face{
+
+   font-family: silentReaction;
+   src: url(assets/font/SilentReaction.ttf);
+}
+
+/*Ubuntu Light from Ubuntu Family*/
+@font-face{
+   font-family: ubuntuL;
+   src: url(assets/font/Ubuntu-L.ttf);
+}
+
+/*Ubuntu Medium from Ubuntu Family*/
+@font-face{
+   font-family: ubuntuM;
+   src: url(assets/font/Ubuntu-M.ttf);
+}
+
+
+#aboutMain{
+
+font-family: ubuntuL;
+font-size:21px;
+
+}
+#aboutMain div{
+position:relative;
+margin-bottom:50px;
+padding-left:20px;
+padding-right:20px;
+padding-bottom:10px;
+padding-top:15px;
+
+-webkit-box-shadow: 6px 6px 20px 1px #1c1c1c;
+-moz-box-shadow: 6px 6px 20px 1px #1c1c1c;
+box-shadow: 6px 6px 20px 1px #1c1c1c;
+}
+
+#aboutMain div span{
+font-family: silentReaction;
+font-size: 50px;
+font-weight:bold;
+}
+
+#aboutMain div th{
+text-align:left;
+padding-bottom:20px;
+}
+
+#aboutMain div td{
+padding-bottom:10px;
+}
+
+#myPhoto{
+
+margin-top:20px;
+background:white;
+
+float:left;
+
+-webkit-transform: rotate(-5deg);
+-moz-transform: rotate(-5deg);
+-o-transform: rotate(-5deg);
+-ms-transform: rotate(-5deg);
+transform:rotate(-5deg);
+
+width:200px;
+height:300px;
+max-width:250px;
+max-height:325px;
+}
+
+#myPhoto img{
+width:100%;
+height:90%;
+margin-top:2%;
+
+border:1px solid rgba(0,0,0,0.3);
+
+}
+
+#aboutOverview{
+
+width:57%;
+float:right;
+background:#01A49C;
+
+}
+
+@keyframes fullBar{
+   from {width:0%;}
+   to {width:100%;}
+}
+
+@keyframes SeventyBar{
+   from {width:0%;}
+   to {width:61%;}
+}
+
+@keyframes NinetyBar{
+    from {width:0%;}
+   to {width:91%;}
+}
+
+@keyframes EightyBar{
+    from {width:0%;}
+   to {width:86%;}
+}
+
+@keyframes sixtyBar{
+    from {width:0%;}
+   to {width:66%;}
+}
+
+@keyframes uniqueBar{
+    from {width:0%;}
+   to {width:94%;}
+}
+
+@keyframes chineseBar{
+    from {width:0%;}
+   to {width:48%;}
+}
+
+#aboutInterest{
+width:52%;
+float:right;
+background:#61378C;
+
+-webkit-transform: rotate(-2deg);
+-moz-transform: rotate(-2deg);
+-o-transform: rotate(-2deg);
+-ms-transform: rotate(-2deg);
+transform: rotate(-2deg);
+}
+
+#aboutInterest table{
+width:100%;
+}
+
+#aboutInterest tr td:first-child{
+padding-right:20px;
+width:55%;
+height:30px;
+}
+#aboutInterest tr td:last-child{
+
+width:42%;
+}
+
+#aboutInterest tr td div{
+background-color:#777;
+height:25px;
+padding: 0px;
+margin: 0px;
+box-shadow:none;
+}
+
+#aboutInterest tr:nth-child(2) div{
+width:0%;
+}
+
+#aboutInterest tr:nth-child(3) div{
+width:0%;
+}
+
+#aboutInterest tr:nth-child(4) div{
+width:0%;
+}
+
+#aboutInterest tr:nth-child(5) div{
+width:0%;
+}
+
+#aboutInterest tr:nth-child(6) div{
+width:0%;
+}
+
+#aboutInterest tr:nth-child(7) div{
+width:0%;
+}
+
+
+#aboutSkills{
+
+width: 30%;
+float:left;
+background:#CC7946;
+
+-webkit-transform: rotate(1deg);
+-moz-transform: rotate(1deg);
+-o-transform: rotate(1deg);
+-ms-transform: rotate(1deg);
+transform: rotate(1deg);
+}
+
+#aboutSkills table{
+width:100%;
+
+}
+
+#aboutSkills ul{
+margin:0px;
+padding-left:13%;
+}
+
+#aboutTimeLine{
+width: 100%;
+background: #B1AB52;
+float:left;
+}
+
+#aboutHobbies{
+float:left;
+background:white;
+}
+
+#aboutLanguages{
+width: 40%;
+float:left;
+background:#B1AB52;
+}
+
+#aboutLanguages table{
+width:100%;
+}
+
+#aboutLanguages tr td:first-child{
+padding-right:20px;
+width:52%;
+height:30px;
+}
+#aboutLanguages tr td:last-child{
+
+width:45%;
+}
+
+#aboutLanguages tr td div{
+background-color:#6A6731;
+height:25px;
+padding: 0px;
+margin: 0px;
+box-shadow:none;
+}
+
+#aboutLanguages tr:nth-child(2) div{
+width:0%;
+}
+
+#aboutLanguages tr:nth-child(3) div{
+width:0%;
+}
+
+#aboutLanguages tr:nth-child(4) div{
+width:0%;
+}
+
+/*Contact Me -----------------------------------------------------*/
+
+#contactDiv, #sitemapDiv{
+width:60%;
+transform:none;
+font-family:ubuntuL;  
+font-size:20px;
+padding: 10px 20px 20px 20px;
+color:black;
+margin-left:auto;
+margin-right:auto;
+float:none;
+background:#01A49C;
+
+-webkit-box-shadow: 0px 6px 20px 1px #1c1c1c;
+-moz-box-shadow: 0px 6px 20px 1px #1c1c1c;
+box-shadow: 0px 6px 20px 1px #1c1c1c;
+
+}
+
+
+#contactDiv table th{
+font-family: silentReaction;
+font-size: 50px;
+font-weight:bold;
+text-align:center;
+padding-bottom:10px;
+}
+
+#contactDiv table{
+width:100%;
+}
+
+#contactDiv table tr{
+height:40px;
+min-height:30px;
+max-height:30px;
+
+}
+
+#contactDiv table tr td{
+vertical-align:top;
+}
+
+#contactDiv table tr td:first-child{
+width:25%;
+min-width:120px;
+}
+
+#contactDiv table tr:last-child td{
+text-align:center;
+}
+
+#contactDiv textarea{
+width:90%;
+height:150px;
+border:1px solid #777;
+background:white;
+}
+
+
+#senderNameBox, #senderEmailBox{
+height:20px;
+border:1px solid #777;
+}
+
+#contactForm textarea:hover{
+background:white;
+}
+
+#emailMsgTxtArea:hover{
+background:white;
+}
+
+#sendButton{
+background:#2B1B17;
+
+width:20%;
+height:40px;
+border-radius:10px;
+border: none;
+font-family:ubuntuL;
+font-size:20px;
+font-weight:bold;
+color:white;
+border:none;
+}
+
+.form-error{
+font-size:15px;
+color:#EE0000;
+font-family:ubuntuM;
+}
+
+/*Sitemap ---------------------------------------------------------------------------------*/
+
+#sitemapDiv {
+font-family:ubuntuM;
+}
+#sitemapDiv div{
+font-family: silentReaction;
+font-size: 50px;
+font-weight:bold;
+text-align:center;
+
+}
+
+#sitemapDiv li{
+
+padding-bottom:8px;
+padding-top:8px;
+}
+
+#sitemapDiv a{
+text-decoration:none;
+color:#201932;
+}
+
+#sitemapDiv a:hover{
+text-decoration:underline;
+}
+
+#sitemapDiv a:visited{
+text-decoration:none;
+}
+
+
+footer{
+width:100%;
+min-width:950px;
+background:#777;
+margin-top:-4px;
+height:40px;
+font-family:ubuntuL;
+text-align:center;
+}
+
+footer #copyRightStatement{
+padding-top:10px;
+}
+
+#copyRightStatement a{
+color:#201932;
+text-decoration:none;
+}
+
+#copyRightStatement a:hover{
+color:#201932;
+text-decoration:underline;
+}
+
+#copyRightStatement a:visited{
+color:#201932;
+text-decoration:none;
+}
+
+
+#mob{
+
+font-family:ubuntuL;
+font-size:40px;
+color:white;
+width:90%;
+margin-left:8%;
+margin-right:auto;
+margin-top:10%;
+
+}
+
