@@ -1,0 +1,22 @@
+{
+  "name": "bryanaugusli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baugusli/bryanaugusli.git"
+  },
+  "author": "Bryan Austin Augusli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baugusli/bryanaugusli/issues"
+  },
+  "homepage": "https://github.com/baugusli/bryanaugusli#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
