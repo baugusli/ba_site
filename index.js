@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const serviceAppPort = 8099;
+const serviceAppPort = 80;
 const mainPath = path.join(__dirname, '/baugusli');
 
 app.get('/', function(req, res) {
