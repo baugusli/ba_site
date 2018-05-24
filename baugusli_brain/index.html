@@ -144,6 +144,7 @@
   <!-- Proper title alignment, proper icon (svg if possible) for each brain section, Click me text beside brain, Title banner for every brain section on the left, click event to show more details on the right, Contact me on the bottom of brain and social media links, Top right navigation menu?-->
   <!-- brain icon beside title-->
   <!-- Link to https://icons8.com/license/ -->
+  <!-- an engineer. avid gamers? Problem solver -->
   <div id="overlay">
     <span id="ba_title" class="title-color title-font">BRYAN A AUGUSLI</span>
   </div>
@@ -383,24 +384,6 @@
       });
     };
 
-    /*
-    function scaleDown() {
-      path[0].forEach(function(p, i, d) {
-        console.log(p);
-        console.log(i);
-        console.log(d);
-
-        var xPos = d.point.x;
-        var yPos = d.point.y;
-        d3.select(p).attr('transform', 'scale(0.5)');
-        // .attr('transform', getScaleTransformString(xPos, yPos, true));
-      });
-
-        //this.parentNode.appendChild(this);
-      
-    }
-    */
-
     function generateThoughtPath(offset, dimension) {
        //////
       var thoughtPath = [];
@@ -607,17 +590,7 @@
         path.exit().remove();
         
         drawImg();
-        /*
-        link = link.data(d3_geom_voronoi.links(vertices))
-        link.enter().append("line")
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; })
 
-        link.exit().remove()
-        */
-        
         var clickMePath = document.querySelector('#click-me-path');
         if (clickMePath) clickMePath.remove();
         svg.append("path")
@@ -646,9 +619,7 @@
           .attr("id", "pick-me-brain")
           .append("textPath")
           .attr('xlink:xlink:href', '#click-me-path')
-          .text("Pick My Brain");
-        
-        
+          .text("Pick My Brain");    
 
         if(!simulate) force.stop()
     }
