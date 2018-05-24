@@ -8,6 +8,7 @@
     <meta property="og:description" content="Insights tool by Collage Group" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
     
     <!--
@@ -70,7 +71,7 @@
           color: #144A56;
         }
         .title-font {
-          font-family: bombefont-Regular, Larke-Sans-Bold, lato, serif;
+          font-family: bombefont-Regular, Larke-Sans-Bold, lato, sans-serif;
         }
         #ba_title {
           font-size: 4em;
@@ -97,7 +98,7 @@
           font-family: Larke-Sans-Bold, 'Lato', serif;
         }
         .brain-content-desc {
-          font-family: 'Lato', 'Open Sans',Arial, sans-serif;
+          font-family:  'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
         }
         .left-align {
           text-align:left;
@@ -113,6 +114,20 @@
           font-family: bombefont-Regular, Larke-Sans-Bold, lato, serif;
           stroke: #144A56;
           fill: #144A56;
+        }
+        .ba-btn {
+          border: solid 1px #144A56;
+          font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
+        }
+        .ba-btn:hover {
+          color: #fff !important;
+          background-color: #144A56;
+        }
+        .btn-overlay {
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          top: 90%;
         }
         /*
         .dream-path {
@@ -131,6 +146,9 @@
   <!-- Link to https://icons8.com/license/ -->
   <div id="overlay">
     <span id="ba_title" class="title-color title-font">BRYAN A AUGUSLI</span>
+  </div>
+  <div class="btn-overlay">
+    <a class="btn ba-btn"> CONTACT ME</a>
   </div>
   <div id="brain-content-sport" class="container brain-content title-font title-color">
     <span class="brain-content-title">Sports</span>
@@ -493,6 +511,8 @@
 
         var hoveredImage = img[0][i];
         hoveredImage.parentNode.appendChild(hoveredImage);
+
+        document.body.style.cursor = "pointer";
       }
       
     }
@@ -503,12 +523,14 @@
         var yPos = d.point.y;
         var hoveredPath = path[0][i];
         d3.select(hoveredPath).attr('transform', getScaleTransformString(xPos, yPos, true));
+        document.body.style.cursor = "pointer";
       }
     }
 
     var unhighlightPart = function(d, i) {
       d3.select(this)
         .attr('transform', '');
+      document.body.style.cursor = "";
     }
 
 
