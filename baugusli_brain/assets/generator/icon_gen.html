@@ -8,24 +8,11 @@
     <meta property="og:description" content="Insights tool by Collage Group" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
-    
-    <!--
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
-    -->
-    <link rel="stylesheet" href="bootstrap.css">
-    <script src="jquery.js"></script>
-    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    -->
-    <!--
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    -->
-    <script src="bootstrap.js"></script>
-    <script src="d3.js"></script>
-    <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <style type="text/css">
         @font-face {
             font-family: 'Larke-Sans-Bold';
@@ -55,41 +42,33 @@
         line {
             pointer-events: none;
             stroke: #EFEDF5;
-            stroke-width: 2px;
+            stroke-width: 15px;
             opacity: .05;
         }
         path{
             /*stroke: #EFEDF5;*/
-            stroke: #144A56;
-            /*stroke-width: 4px;*/
+            stroke: #EFEDF5;
+            stroke-width: 15px;
         }
         body{
           margin: 0px;
-          overflow: hidden;
         }
+        /*color: 144A56, 432D2C*/
         .title-color {
-          /*color: #144A56;*/
-          /*color: #EDE8E2;*/
-          color: white;
+          color: #144A56;
         }
         .title-font {
-          font-family: 'Josefin Sans', bombefont-Regular, Larke-Sans-Bold, lato, sans-serif;
+          font-family: bombefont-Regular, Larke-Sans-Bold, lato, serif;
         }
-        #ba-title {
-          font-size: 3em;
+        #ba_title {
+          font-size: 84px;
         }
-        .middle-align {
+        #overlay {
+          position: absolute;
+          width: 100%;
           text-align: center;
         }
-        .overlay {
-          position: absolute;
-        }
-        .full-width {
-          width: 100%;
-        }
         #brain_canvas {
-          /*background-color: #EDE8E2;*/
-          /*margin-top: 4%;*/
         }
         .brain-content {
           position: absolute;
@@ -104,6 +83,9 @@
         .brain-content-sub-title {
           font-family: Larke-Sans-Bold, 'Lato', serif;
         }
+        .brain-content-desc {
+          font-family: 'Lato', 'Open Sans',Arial, sans-serif;
+        }
         .left-align {
           text-align:left;
         }
@@ -113,27 +95,6 @@
         .brain-content-col .row{
           margin-bottom: 10px;
         }
-        #pick-me-brain{
-          font-size: 1.5em;
-          stroke: #144A56;
-          fill: #144A56;
-        }
-        .ba-btn {
-          border: solid 1px #144A56;
-          stroke: #144A56;
-        }
-        .ba-btn:hover {
-          color: #fff !important;
-          background-color: #144A56;
-        }
-        .main-font {
-          font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
-        }
-        .marketing-overlay {
-          top: 60%;
-          font-size: 1em;
-          stroke: #144A56;
-        }
         /*
         .dream-path {
           fill: #EDE8E2;
@@ -142,94 +103,15 @@
         }
         */
         /*svg background color: EDE8E2, E3DFC6, 2B859D*/
-        .main-content {
-          height: 85vh;
-        }
-        .main-background {
-          background-color: #EDE8E2;
-        }
-        .btn-padding {
-          padding: 30px 0;
-        }
-        #title-overlay {
-          border-bottom: 1px solid #144A56;
-          background-color: #144A56;
-        }
-        .accent-color {
-          color: #144A56;
-        }
     </style>
 </head>
 <body>
-  <!-- things to do -->
-  <!-- Proper title alignment, proper icon (svg if possible) for each brain section, Click me text beside brain, Title banner for every brain section on the left, click event to show more details on the right, Contact me on the bottom of brain and social media links, Top right navigation menu?-->
-  <!-- brain icon beside title-->
-  <!-- Link to https://icons8.com/license/ -->
-  <!-- an engineer. avid gamers? Problem solver -->
-  <div class="main-content main-background">
-    <div id="title-overlay" class="full-width middle-align">
-      <span id="ba-title" class="title-color title-font">
-        <img class="align-middle" style="width:60px;" src="assets/images/icons/ba_brain_icon.svg"></img>
-        bryan augusli
-      </span>
-    </div>
-    <div id="brain_canvas">
-    </div>
-    <div class="marketing-overlay overlay full-width middle-align main-font accent-color">
-      <div>
-        <h2>An Engineer With Expertise In Data.</h2>
-        <h2>Video Game Enthusiast.</h2>
-      </div>
-      <div class="btn-padding">
-        <a class="btn ba-btn">CONTACT ME</a>
-      </div>
-    </div>
-  </div>
-
-  <div id="brain-content-sport" class="container brain-content title-font title-color">
-    <span class="brain-content-title">Sports</span>
-    <div class="col brain-content-col">
-      <!-- badminton -->
-      <div class="row">
-        <div class="col-4">
-          <img src="assets/images/brain-content-icons/icons8-badminton-player-90.png">
-        </div>
-        <div class="col-8 left-align top-align brain-content-desc main-font">
-          <div><h3>Badminton</h3></div>
-          <div> Play badminton smack that shuttlecock</div>
-        </div>
-      </div>
-      <!-- badminton end -->
-      <!-- swimming -->
-      <div class="row">
-        <div class="col-4">
-          <img src="assets/images/brain-content-icons/icons8-swimming-filled-100.png">
-        </div>
-        <div class="col-8 left-align top-align brain-content-desc main-font">
-          <div><h3>Swim</h3></div>
-          <div> I swim like there is no water</div>
-        </div>
-      </div>
-      <!-- swimming end-->
-      <!-- soccer -->
-      <div class="row">
-        <div class="col-4">
-          <img src="assets/images/brain-content-icons/icons8-soccer-filled-100.png">
-        </div>
-        <div class="col-8 left-align top-align brain-content-desc main-font">
-          <div><h3>Soccer</h3></div>
-          <div> I play soccer.</div>
-        </div>
-      </div>
-      <!-- soccer end-->
-    </div>
-  </div>
+<div id="brain_canvas">
+</div>
 <script type="text/javascript">
-    var windowsHeight = window.innerHeight;
-    var windowsWidth = window.innerWidth;
     // h = window.innerHeight > 700 ? 700 : (window.innerHeight || 500),
-    var w = windowsWidth;
-    var h = windowsHeight * 0.5;
+    var w = 450;
+    var h = 450;
     var radius = 5.25;
     var links = [];
     var simulate = true;
@@ -419,6 +301,24 @@
       });
     };
 
+    /*
+    function scaleDown() {
+      path[0].forEach(function(p, i, d) {
+        console.log(p);
+        console.log(i);
+        console.log(d);
+
+        var xPos = d.point.x;
+        var yPos = d.point.y;
+        d3.select(p).attr('transform', 'scale(0.5)');
+        // .attr('transform', getScaleTransformString(xPos, yPos, true));
+      });
+
+        //this.parentNode.appendChild(this);
+      
+    }
+    */
+
     function generateThoughtPath(offset, dimension) {
        //////
       var thoughtPath = [];
@@ -490,19 +390,18 @@
       var brainContentId = brainIdMapping[id].contentEleId;
       if (brainContentId) {
         var smallThoughtDimension = {width: 59, height: 30};
-        var offset = [-4, 0];
+        var offset = [-4, -18];
         var firstThought = generateThoughtPath(offset, smallThoughtDimension);
 
-        var secondOffset = [82, -30];
+        var secondOffset = [82, -48];
         var secondThought = generateThoughtPath(secondOffset, smallThoughtDimension);
 
-        var contentDimension = {width: 400, height: 390};
-        var contentOffset = secondOffset.map((coord, i) => (i === 0) ? coord + 30 : coord + 190);
+        var contentDimension = {width: 400, height: 400};
+        var contentOffset = secondOffset.map((coord, i) => (i === 0) ? coord + 72 : coord + 200);
         var content = generateThoughtPath(contentOffset, contentDimension);
 
         // Content
-        var contentPadding = 10;
-        var leftCoord = maxBrainCoord.maxPoint.x + contentOffset[0] + contentPadding;
+        var leftCoord = maxBrainCoord.maxPoint.x + contentOffset[0];
         var topCoord = maxBrainCoord.maxPoint.y - contentDimension.height * 0.19;
         d3.select("#" + brainContentId)
           .style("left", leftCoord + 'px')
@@ -529,8 +428,6 @@
 
         var hoveredImage = img[0][i];
         hoveredImage.parentNode.appendChild(hoveredImage);
-
-        document.body.style.cursor = "pointer";
       }
       
     }
@@ -541,21 +438,19 @@
         var yPos = d.point.y;
         var hoveredPath = path[0][i];
         d3.select(hoveredPath).attr('transform', getScaleTransformString(xPos, yPos, true));
-        document.body.style.cursor = "pointer";
       }
     }
 
     var unhighlightPart = function(d, i) {
       d3.select(this)
         .attr('transform', '');
-      document.body.style.cursor = "";
     }
 
 
     var drawImg = function() {
         img = img.data(d3_geom_voronoi(vertices));
         img.enter().append("image")
-          //.on("click", moreDetail)
+          .on("click", moreDetail)
           .on("mouseover", highlightImage)
           .transition().duration(1000);
 
@@ -609,7 +504,7 @@
                   vertices[i] = {x: vertices[i].x + d3.event.dx, y: vertices[i].y + d3.event.dy}
               })
             ) */
-            .style("fill", function(d, i) { return color(0) });
+            //.style("fill", function(d, i) { return color(0) });
         path.attr("d", function(d, i) { 
               if (i === maxBrainId) {
                 setMaxBrainPath(d);
@@ -618,27 +513,36 @@
               return data; 
               
             })
-            //.on("click", moreDetail)
+            .on("click", moreDetail)
             .on("mouseover", highlightPart)
             .on("mouseout", unhighlightPart)
-            .transition().duration(150).style("fill", function(d, i) { return color(d3.geom.polygon(d).area()) });
+            .transition().duration(150).style("fill", function(d, i) { return 'none' });
         path.exit().remove();
         
-        drawImg();
+        // drawImg();
+        /*
+        link = link.data(d3_geom_voronoi.links(vertices))
+        link.enter().append("line")
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; })
 
+        link.exit().remove()
+        */
+        
+        /*
         var clickMePath = document.querySelector('#click-me-path');
         if (clickMePath) clickMePath.remove();
         svg.append("path")
           .attr("id", "click-me-path")
           //.style("fill", function(d, i) { return color(0) })
           .attr("d", function(d, i) { 
-            // TODO: MAGIC NUMBER!!
-            var brainWidth = 330;
-            var startCoord = (maxBrainCoord.maxPoint.x - brainWidth) + "," + (maxBrainCoord.maxPoint.y + h * 0.3);
+            var startCoord = (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y * 1.15);
 
             var data = "M" + startCoord
-            + " C" + (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y * 0.82)
-            + " " + (maxBrainCoord.maxPoint.x) + "," + (maxBrainCoord.maxPoint.y * 0.9)
+            + " C" + (maxBrainCoord.maxPoint.x * 0.8) + "," + (maxBrainCoord.maxPoint.y * 1.05)
+            + " " + (maxBrainCoord.maxPoint.x * 0.9) + "," + (maxBrainCoord.maxPoint.y * 0.9)
             + " " + maxBrainCoord.maxPoint.x + "," + maxBrainCoord.maxPoint.y;
             return data; 
           })
@@ -646,18 +550,14 @@
           //.style("fill", function(d) { return '#E04230'});
           .style("fill", "none")
           .style("stroke-width", "3px")
-          .style("stroke", "#144A56")
-          .style("display", "none");
+          .style("stroke", "#144A56");
 
         var pickMePath = document.querySelector('#pick-me-brain');
         if (pickMePath) pickMePath.remove();
-        svg
-          .append("text")
-          .attr("id", "pick-me-brain")
-          .attr("class", "main-font")
-          .append("textPath")
-          .attr('xlink:xlink:href', '#click-me-path')
-          .text("Pick My Brain");    
+        svg.append("text").attr("id", "pick-me-brain").append("textPath").attr('xlink:xlink:href', '#click-me-path').text("Pick My Brain").style("color", "red");
+        */
+        
+        
 
         if(!simulate) force.stop()
     }
