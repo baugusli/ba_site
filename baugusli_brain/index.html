@@ -73,13 +73,15 @@
         .title-font {
           font-family: bombefont-Regular, Larke-Sans-Bold, lato, sans-serif;
         }
-        #ba_title {
+        #ba-title {
           font-size: 4em;
         }
-        #overlay {
+        #title-overlay {
+          text-align: center;
+        }
+        .overlay {
           position: absolute;
           width: 100%;
-          text-align: center;
         }
         #brain_canvas {
           background-color: #EDE8E2;
@@ -118,6 +120,7 @@
         .ba-btn {
           border: solid 1px #144A56;
           font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
+          stroke: #144A56;
         }
         .ba-btn:hover {
           color: #fff !important;
@@ -128,6 +131,12 @@
           width: 100%;
           text-align: center;
           top: 90%;
+        }
+        .marketing-overlay {
+          top: 40%;
+          font-size: 1em;
+          font-family: bombefont-Regular, Larke-Sans-Bold, lato, serif;
+          stroke: #144A56;
         }
         /*
         .dream-path {
@@ -145,11 +154,15 @@
   <!-- brain icon beside title-->
   <!-- Link to https://icons8.com/license/ -->
   <!-- an engineer. avid gamers? Problem solver -->
-  <div id="overlay">
-    <span id="ba_title" class="title-color title-font">BRYAN A AUGUSLI</span>
+  <div id="title-overlay" class="overlay">
+    <span id="ba-title" class="title-color title-font">BRYAN A AUGUSLI</span>
   </div>
-  <div class="btn-overlay">
+  <div class="btn-overlay overlay">
     <a class="btn ba-btn"> CONTACT ME</a>
+  </div>
+  <div class="marketing-overlay overlay">
+    <h2>Engineer who loves to work with data</h2>
+    <h2>Gamers at night</h2>
   </div>
   <div id="brain-content-sport" class="container brain-content title-font title-color">
     <span class="brain-content-title">Sports</span>
