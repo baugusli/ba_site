@@ -27,26 +27,11 @@
     <script src="d3.js"></script>
     <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
     <style type="text/css">
-        @font-face {
-            font-family: 'Larke-Sans-Bold';
-            src:url('assets/font-family/webfonts_Larke-Sans-Bold/Larke-Sans-Bold.ttf.woff') format('woff'),
-                url('assets/font-family/webfonts_Larke-Sans-Bold/Larke-Sans-Bold.ttf.svg#Larke-Sans-Bold') format('svg'),
-                url('assets/font-family/webfonts_Larke-Sans-Bold/Larke-Sans-Bold.ttf.eot'),
-                url('assets/font-family/webfonts_Larke-Sans-Bold/Larke-Sans-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
-            font-weight: normal;
-            font-style: normal;
+        body{
+          margin: 0px;
+          overflow: hidden;
         }
-
-        @font-face {
-            font-family: 'bombefont-Regular';
-            src:url('assets/font-family/webfonts_bombefont-Regular/bombefont-Regular.ttf.woff') format('woff'),
-                url('assets/font-family/webfonts_bombefont-Regular/bombefont-Regular.ttf.svg#bombefont-Regular') format('svg'),
-                url('assets/font-family/webfonts_bombefont-Regular/bombefont-Regular.ttf.eot'),
-                url('assets/font-family/webfonts_bombefont-Regular/bombefont-Regular.ttf.eot?#iefix') format('embedded-opentype'); 
-            font-weight: normal;
-            font-style: normal;
-        }
-
+        /* SVG Styles */
         circle {
             stroke: #EFEDF5;
             fill: #EFEDF5;
@@ -63,20 +48,16 @@
             stroke: #144A56;
             /*stroke-width: 4px;*/
         }
-        body{
-          margin: 0px;
-          overflow: hidden;
-        }
+
+        /* Common Classes */
+
         .title-color {
           /*color: #144A56;*/
           /*color: #EDE8E2;*/
           color: white;
         }
         .title-font {
-          font-family: 'Josefin Sans', bombefont-Regular, Larke-Sans-Bold, lato, sans-serif;
-        }
-        #ba-title {
-          font-size: 3em;
+          font-family: 'Josefin Sans', lato, sans-serif;
         }
         .middle-align {
           text-align: center;
@@ -87,10 +68,24 @@
         .full-width {
           width: 100%;
         }
-        #brain_canvas {
-          /*background-color: #EDE8E2;*/
-          /*margin-top: 4%;*/
+        .left-align {
+          text-align:left;
         }
+        .top-align {
+          vertical-align: top;
+        }
+        .main-content {
+          /*85vh*/
+          height: 100vh;
+        }
+        .main-font {
+          font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
+        }
+        .accent-color {
+          color: #144A56;
+        }
+
+        /* Custom Classes */
         .brain-content {
           position: absolute;
           display: none;
@@ -104,19 +99,8 @@
         .brain-content-sub-title {
           font-family: Larke-Sans-Bold, 'Lato', serif;
         }
-        .left-align {
-          text-align:left;
-        }
-        .top-align {
-          vertical-align: top;
-        }
         .brain-content-col .row{
           margin-bottom: 10px;
-        }
-        #pick-me-brain{
-          font-size: 1.5em;
-          stroke: #144A56;
-          fill: #144A56;
         }
         .ba-btn {
           border: solid 1px #144A56;
@@ -126,24 +110,8 @@
           color: #fff !important;
           background-color: #144A56;
         }
-        .main-font {
-          font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
-        }
-        .marketing-overlay {
-          top: 60%;
-          font-size: 1em;
-          stroke: #144A56;
-        }
-        /*
-        .dream-path {
-          fill: #EDE8E2;
-          stroke-width: 8px;
-          stroke: rgb(107, 169, 203);
-        }
-        */
-        /*svg background color: EDE8E2, E3DFC6, 2B859D*/
-        .main-content {
-          height: 85vh;
+        .marketing-overlay-position {
+          top: 75%;
         }
         .main-background {
           background-color: #EDE8E2;
@@ -151,12 +119,38 @@
         .btn-padding {
           padding: 30px 0;
         }
+
+        /* Custom Ids */
+        #ba-title {
+          font-size: 3em;
+        }
+        #brain_canvas {
+          /*background-color: #EDE8E2;*/
+          /*margin-top: 4%;*/
+        }
+        #pick-me-brain{
+          font-size: 1.5em;
+          stroke: #144A56;
+          fill: #144A56;
+        }
         #title-overlay {
           border-bottom: 1px solid #144A56;
           background-color: #144A56;
         }
-        .accent-color {
-          color: #144A56;
+        #marketing-overlay {
+          font-size: 1em;
+          stroke: #144A56;
+        }
+
+        /* Media Selectors */
+        @media(min-width:1200px){
+          .main-content {
+            /*85vh*/
+            height: 80vh;
+          }
+          .marketing-overlay-position {
+            top: 60%;
+          }
         }
     </style>
 </head>
@@ -175,7 +169,7 @@
     </div>
     <div id="brain_canvas">
     </div>
-    <div class="marketing-overlay overlay full-width middle-align main-font accent-color">
+    <div id="marketing-overlay" class="marketing-overlay-position overlay full-width middle-align main-font accent-color">
       <div>
         <h2>An Engineer With Expertise In Data.</h2>
         <h2>Video Game Enthusiast.</h2>
@@ -229,7 +223,7 @@
     var windowsWidth = window.innerWidth;
     // h = window.innerHeight > 700 ? 700 : (window.innerHeight || 500),
     var w = windowsWidth;
-    var h = windowsHeight * 0.5;
+    var h = windowsWidth > 1200 ? windowsHeight * 0.5 : windowsHeight * 0.6;
     var radius = 5.25;
     var links = [];
     var simulate = true;
@@ -633,8 +627,10 @@
           //.style("fill", function(d, i) { return color(0) })
           .attr("d", function(d, i) { 
             // TODO: MAGIC NUMBER!!
+            // Not actual width and height..
             var brainWidth = 330;
-            var startCoord = (maxBrainCoord.maxPoint.x - brainWidth) + "," + (maxBrainCoord.maxPoint.y + h * 0.3);
+            var brainHeight = 140;
+            var startCoord = (maxBrainCoord.maxPoint.x - brainWidth) + "," + (maxBrainCoord.maxPoint.y + brainHeight);
 
             var data = "M" + startCoord
             + " C" + (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y * 0.82)
