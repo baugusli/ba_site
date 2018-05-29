@@ -111,13 +111,10 @@
           background-color: #144A56;
         }
         .marketing-overlay-position {
-          top: 75%;
+          top: 78%;
         }
         .main-background {
           background-color: #EDE8E2;
-        }
-        .btn-padding {
-          padding: 30px 0;
         }
 
         /* Custom Ids */
@@ -143,13 +140,16 @@
         }
 
         /* Media Selectors */
-        @media(min-width:1200px){
+        @media(min-height:800px){
           .main-content {
             /*85vh*/
             height: 80vh;
           }
           .marketing-overlay-position {
             top: 60%;
+          }
+          .btn-padding {
+            padding: 30px 0;
           }
         }
     </style>
@@ -221,9 +221,11 @@
 <script type="text/javascript">
     var windowsHeight = window.innerHeight;
     var windowsWidth = window.innerWidth;
+    console.log(windowsWidth);
+    console.log(windowsHeight);
     // h = window.innerHeight > 700 ? 700 : (window.innerHeight || 500),
     var w = windowsWidth;
-    var h = windowsWidth > 1200 ? windowsHeight * 0.5 : windowsHeight * 0.6;
+    var h = windowsHeight > 800 ? windowsHeight * 0.5 : windowsHeight * 0.67;
     var radius = 5.25;
     var links = [];
     var simulate = true;
@@ -633,8 +635,8 @@
             var startCoord = (maxBrainCoord.maxPoint.x - brainWidth) + "," + (maxBrainCoord.maxPoint.y + brainHeight);
 
             var data = "M" + startCoord
-            + " C" + (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y * 0.82)
-            + " " + (maxBrainCoord.maxPoint.x) + "," + (maxBrainCoord.maxPoint.y * 0.9)
+            + " C" + (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y - brainHeight * 0.82)
+            + " " + (maxBrainCoord.maxPoint.x) + "," + (maxBrainCoord.maxPoint.y + brainHeight * 0.9)
             + " " + maxBrainCoord.maxPoint.x + "," + maxBrainCoord.maxPoint.y;
             return data; 
           })
