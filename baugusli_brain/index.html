@@ -29,7 +29,7 @@
     <style type="text/css">
         body{
           margin: 0px;
-          overflow: hidden;
+          /*overflow: hidden;*/
         }
         /* SVG Styles */
         circle {
@@ -221,8 +221,6 @@
 <script type="text/javascript">
     var windowsHeight = window.innerHeight;
     var windowsWidth = window.innerWidth;
-    console.log(windowsWidth);
-    console.log(windowsHeight);
     // h = window.innerHeight > 700 ? 700 : (window.innerHeight || 500),
     var w = windowsWidth;
     var h = windowsHeight > 800 ? windowsHeight * 0.5 : windowsHeight * 0.67;
@@ -635,7 +633,7 @@
             var startCoord = (maxBrainCoord.maxPoint.x - brainWidth) + "," + (maxBrainCoord.maxPoint.y + brainHeight);
 
             var data = "M" + startCoord
-            + " C" + (maxBrainCoord.maxPoint.x * 0.7) + "," + (maxBrainCoord.maxPoint.y - brainHeight * 0.82)
+            + " C" + (maxBrainCoord.maxPoint.x - brainWidth * 0.7) + "," + (maxBrainCoord.maxPoint.y - brainHeight * 0.82)
             + " " + (maxBrainCoord.maxPoint.x) + "," + (maxBrainCoord.maxPoint.y + brainHeight * 0.9)
             + " " + maxBrainCoord.maxPoint.x + "," + maxBrainCoord.maxPoint.y;
             return data; 
