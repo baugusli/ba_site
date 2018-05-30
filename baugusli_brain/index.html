@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
     
     <!--
@@ -29,6 +31,7 @@
     <style type="text/css">
         body{
           margin: 0px;
+          overflow-x: hidden;
           /*overflow: hidden;*/
         }
         /* SVG Styles */
@@ -79,10 +82,28 @@
           height: 100vh;
         }
         .main-font {
-          font-family: 'Rubik', 'Lato', 'Open Sans',Arial, sans-serif;
+          font-family: 'Rubik', 'Lato', 'Open Sans', Arial, sans-serif;
         }
         .accent-color {
           color: #144A56;
+        }
+        .content {
+          font-size: 1.2em;
+          padding: 80px 0;
+        }
+        .content img {
+          width: 60px;
+          padding-right: 10px;
+        }
+        .sub-content {
+          font-size: 1em;
+          padding: 30px 0;
+        }
+        .grey-background {
+          background-color: #F2F2F2;
+        }
+        .accent-background-color {
+          background-color: #144A56;
         }
 
         /* Custom Classes */
@@ -116,6 +137,48 @@
         .main-background {
           background-color: #EDE8E2;
         }
+        .btn-social {
+          border: 0;
+          color: #fff;
+          border-radius: 100%;
+          display: inline-block;
+          width: 36px;
+          height: 36px;
+          line-height: 36px;
+          text-align: center;
+          padding: 0;
+        }
+        .btn-social.btn-facebook {
+          background: #4f7dd4;
+        }
+        .btn-social.btn-facebook:hover {
+          background: #789bde;
+        }
+        .btn-social.btn-twitter {
+          background: #5bceff;
+        }
+        .btn-social.btn-twitter:hover {
+          background: #8eddff;
+        }
+        .btn-social.btn-linkedin {
+          background: #21a6d8;
+        }
+        .btn-social.btn-linkedin:hover {
+          background: #49b9e3;
+        }
+        .btn-social.btn-google-plus {
+          background: #dc422b;
+        }
+        .btn-social.btn-google-plus:hover {
+          background: #e36957;
+        }
+        .btn-social:hover {
+          color: #fff;
+        }
+        .footer {
+          padding: 20px 0;
+          color: white;
+        }
 
         /* Custom Ids */
         #ba-title {
@@ -132,11 +195,13 @@
         }
         #title-overlay {
           border-bottom: 1px solid #144A56;
-          background-color: #144A56;
         }
         #marketing-overlay {
           font-size: 1em;
           stroke: #144A56;
+        }
+        #profile-pic {
+          width: 200px;
         }
 
         /* Media Selectors */
@@ -161,7 +226,7 @@
   <!-- Link to https://icons8.com/license/ -->
   <!-- an engineer. avid gamers? Problem solver -->
   <div class="main-content main-background">
-    <div id="title-overlay" class="full-width middle-align">
+    <div id="title-overlay" class="full-width middle-align accent-background-color">
       <span id="ba-title" class="title-color title-font">
         <img class="align-middle" style="width:60px;" src="assets/images/icons/ba_brain_icon.svg"></img>
         bryan augusli
@@ -179,6 +244,59 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid content main-font middle-align">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 offset-md-2">
+        <img src="assets/images/brain-content-icons/icons8-graduation-scroll-filled-100.png"></img>
+        <span>Graduated Magna Cum Laude with a B.S. Information Technology (Top 7.5%)</span>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <img src="assets/images/brain-content-icons/icons8-business-filled-100.png"></img>
+        Three years of experience in Data Engineering and Business Intelligence
+      </div>
+    </div>
+  </div>
+  <!-- About me -->
+  <div class="container-fluid sub-content main-font middle-align grey-background">
+    <div class="row-sm-12 middle-align">
+      <h3>About Me</h3>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-2 col-sm-12 offset-md-2">
+        <img src="assets/images/ba.png" id="profile-pic" class="img-responsive img-thumbnail" alt="Bryan Austin Augusli">
+         
+        <h5>Bryan Austin Augusli</h5>
+         
+        <a class="btn btn-social btn-linkedin" href="https://www.linkedin.com/in/baugusli" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a class="btn btn-social btn-facebook" href="https://www.facebook.com/baugusli" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a> 
+
+        <a class="btn btn-social btn-google-plus" href="https://plus.google.com/u/0/101228925204580515169/about" target="_blank">
+          <i class="fab fa-google-plus-g"></i>
+        </a> 
+      </div>
+      <div class="col-md-6 col-sm-12">
+        I am Bryan Austin Augusli, currently a student at George Mason University pursuing a major in BS,Information Technology with minor in Business. I am expecting to graduate in December 2015 with Magna Cum Laude.
+
+        I was born in Indonesia and was introduced to the world of IT when I studied in Singapore. Afterwards, I further my study to the United States of America!
+      </div>
+    </div>
+  </div>
+
+  <!-- Footers -->
+  <div class="container-fluid footer main-font accent-background-color">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 offset-md-2">
+        <span>© 2018 Bryan Austin Augusli. All Rights Reserved.</span>
+        <span><a href="https://icons8.com/license/">Icons8</a></span>
+      </div>
+    </div>
+  </div>
+
 
   <div id="brain-content-sport" class="container brain-content title-font title-color">
     <span class="brain-content-title">Sports</span>
