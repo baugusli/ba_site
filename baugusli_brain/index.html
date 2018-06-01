@@ -65,6 +65,9 @@
         .middle-align {
           text-align: center;
         }
+        .left-align {
+          text-align: left;
+        }
         .overlay {
           position: absolute;
         }
@@ -92,8 +95,7 @@
           padding: 80px 0;
         }
         .content img {
-          width: 60px;
-          padding-right: 10px;
+          max-width: 60px;
         }
         .sub-content {
           font-size: 1em;
@@ -203,6 +205,11 @@
         #profile-pic {
           width: 200px;
         }
+        #sub-content-school img{
+          width: 150px;
+          height: 150px;
+          padding-bottom: 20px;
+        }
 
         /* Media Selectors */
         @media(min-height:800px){
@@ -244,15 +251,28 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid content main-font middle-align">
+  <div class="container-fluid content main-font">
     <div class="row">
-      <div class="col-md-4 col-sm-12 offset-md-2">
-        <img src="assets/images/brain-content-icons/icons8-graduation-scroll-filled-100.png"></img>
-        <span>Graduated Magna Cum Laude with a B.S. Information Technology (Top 7.5%)</span>
+      <div class="col-md-4 offset-md-2">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <img src="assets/images/brain-content-icons/icons8-graduation-scroll-filled-100.png"></img>
+          </div>
+          <div class="col-10">
+           Graduated Magna Cum Laude with a B.S. Information Technology (Top 7.5%)
+          </div>
+        </div>
       </div>
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/brain-content-icons/icons8-business-filled-100.png"></img>
-        Three years of experience in Data Engineering and Business Intelligence
+
+      <div class="col-md-4 offset-md-1">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <img src="assets/images/brain-content-icons/icons8-business-filled-100.png"></img>
+          </div>
+          <div class="col-10">
+           Three years of experience in Data Engineering and Business Intelligence
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -264,25 +284,45 @@
     <div class="row align-items-center">
       <div class="col-md-2 col-sm-12 offset-md-2">
         <img src="assets/images/ba.png" id="profile-pic" class="img-responsive img-thumbnail" alt="Bryan Austin Augusli">
-         
         <h5>Bryan Austin Augusli</h5>
-         
         <a class="btn btn-social btn-linkedin" href="https://www.linkedin.com/in/baugusli" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>
-
         <a class="btn btn-social btn-facebook" href="https://www.facebook.com/baugusli" target="_blank">
           <i class="fab fa-facebook-f"></i>
         </a> 
-
         <a class="btn btn-social btn-google-plus" href="https://plus.google.com/u/0/101228925204580515169/about" target="_blank">
           <i class="fab fa-google-plus-g"></i>
         </a> 
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 left-align">
         I am Bryan Austin Augusli, currently a student at George Mason University pursuing a major in BS,Information Technology with minor in Business. I am expecting to graduate in December 2015 with Magna Cum Laude.
 
         I was born in Indonesia and was introduced to the world of IT when I studied in Singapore. Afterwards, I further my study to the United States of America!
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div id="sub-content-school" class="container-fluid sub-content main-font middle-align">
+    <div class="row-sm-12 middle-align">
+      <h3>Studied in Three Different Countries..</h3>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-4 col-sm-12">
+        <img src="assets/images/school/gmu-logo.gif"></img>
+        <h5>George Mason University, Virginia, U.S</h5>
+        <p>B.S in Information Technology, 3.98 Major GPA</p>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <img src="assets/images/school/nyp-logo.png"></img>
+        <h5>Nanyang Polytechnic, Singapore</h5>
+        <p>Diploma in Information Technology, 3.62 GPA</p>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <img src="assets/images/school/universal-school.png"></img>
+        <h5>Universal School, Indonesia</h5>
+        <p>Secondary School</p>
       </div>
     </div>
   </div>
@@ -362,7 +402,7 @@
       // Education
       0: {
           iconPath:'icons8-mortarboard-90.png',
-          contentEleId: ''
+          contentEleId: 'sub-content-school'
          },
       // Language
       1: {
@@ -498,7 +538,8 @@
     var imgH = 30;
 
     var moreDetail = function(d, i) {
-      drawThoughts(i);
+      // drawThoughts(i);
+      location.hash = '#' + brainIdMapping[i].contentEleId;
     };
 
     var percentageIncrease = 40;
@@ -667,7 +708,7 @@
     var drawImg = function() {
         img = img.data(d3_geom_voronoi(vertices));
         img.enter().append("image")
-          //.on("click", moreDetail)
+          .on("click", moreDetail)
           .on("mouseover", highlightImage)
           .transition().duration(1000);
 
@@ -730,7 +771,7 @@
               return data; 
               
             })
-            //.on("click", moreDetail)
+            .on("click", moreDetail)
             .on("mouseover", highlightPart)
             .on("mouseout", unhighlightPart)
             .transition().duration(150).style("fill", function(d, i) { return color(d3.geom.polygon(d).area()) });
