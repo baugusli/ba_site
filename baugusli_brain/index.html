@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh48N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
     
     <!--
@@ -94,8 +95,9 @@
           font-size: 1.2em;
           padding: 80px 0;
         }
-        .content img {
+        .content-icon img {
           max-width: 60px;
+          padding-bottom: 10px;
         }
         .sub-content {
           font-size: 1em;
@@ -257,12 +259,12 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid content main-font">
+  <div class="container-fluid content main-font content-icon">
     <div class="row">
       <div class="col-md-4 offset-md-2">
         <div class="row justify-content-center">
           <div class="col-auto">
-            <img src="assets/images/brain-content-icons/icons8-graduation-scroll-filled-100.png">
+            <img src="assets/images/brain-content-icons/icons8-graduation-scroll-100.png">
           </div>
           <div class="col-10">
            Graduated Magna Cum Laude with a B.S. Information Technology (Top 7.5%)
@@ -273,7 +275,7 @@
       <div class="col-md-4 offset-md-1">
         <div class="row justify-content-center">
           <div class="col-auto">
-            <img src="assets/images/brain-content-icons/icons8-business-filled-100.png">
+            <img src="assets/images/brain-content-icons/icons8-business-100.png">
           </div>
           <div class="col-10">
            Three years of experience in Data Engineering and Business Intelligence
@@ -334,7 +336,7 @@
   </div>
 
   <!-- Education -->
-  <div id="sub-content-school" class="container-fluid sub-content main-font middle-align grey-background">
+  <div id="sub-content-school" class="container-fluid sub-content main-font middle-align main-background">
     <div class="row-sm-12 middle-align">
       <h3>Studied in Three Different Countries</h3>
     </div>
@@ -363,7 +365,7 @@
       <h3>Introduced to the World of Data from Internship at Amtrak as a Business Intelligence Developer</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-5 col-sm-12">
+      <div class="col-md-5 col-sm-12" style="padding: 50px;">
         <img class="img-fluid" src="assets/images/laptop-dashboard.png">
       </div>
       <div class="col-md-6 col-sm-12">
@@ -385,49 +387,28 @@
   </div>
 
   <!-- Data Engineer -->
-  <div id="sub-content-data_engineer" class="container-fluid sub-content main-font grey-background">
+  <div id="sub-content-data_engineer" class="container-fluid sub-content main-font middle-align content-icon grey-background">
     <div class="row-sm-12 middle-align">
       <h3>Became a Data Engineer</h3>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/school/pretty-data-pipeline">
-      </div>
-      <div class="col-md-8 col-sm-12">
+      <div class="col-md-12 col-sm-12">
         <div class="row">
-          <div class="col-12">
-            <div class="row">
-              <div class="col-auto">
-                <img src="pentaho">
-              </div>
-              <div class="col-8">
-                <h4>ETL</h4>
-                <p>Pentaho Data Integration -> pull data from diff sources and proprietry data + combined + load into data warehouse</p>
-                <p>Informatica ?</p>
-              </div>
-            </div>
+          <div class="col-4">
+            <img src="assets/images/data-engineer/icons8-database-administrator-100.png">
+            <h4>Extraction Transformation Loading (ETL)</h4>
+            <p>Develop ETL processes using <b>Informatica</b> or <b>Pentaho Data Integration</b> to extract data from multiple different sources, transform the data and load them into a data warehouse
+            </p>
           </div>
-          <div class="col-12">
-            <div class="row">
-              <div class="col-auto">
-                <img src="pentaho">
-              </div>
-              <div class="col-8">
-                <h4>Data Warehouse</h4>
-                <p>Redshift -> data warehouse powering all tools</p>
-              </div>
-            </div>
+          <div class="col-4">
+            <img src="assets/images/data-engineer/icons8-big-data-100.png">
+            <h4>Data Warehouse</h4>
+            <p>Responsible for architecting data warehouse schema which houses all of organizational data that powers data tools used by business analysts. <b>Amazon Redshift</b> is one of the data warehouse product that I work with. On top of that, I also work with traditional Relational Database System (RDBMS), such as, <b>PostgreSQL</b> and <b>MySQL</b>.</p>
           </div>
-          <div class="col-12">
-            <div class="row">
-              <div class="col-auto">
-                <img src="pentaho">
-              </div>
-              <div class="col-8">
-                <h4>Data Cleaning</h4>
-                <p>Python -> data cleaning stuff</p>
-              </div>
-            </div>
+          <div class="col-4">
+            <img src="assets/images/data-engineer/icons8-data-quality-240.png">
+            <h4>Working with Data</h4>
+            <p>Wrote <b>Python</b> and <b>R</b> script for data transformation, cleaning, integration check and analysis with neural net package in R.</p>
           </div>
         </div>
       </div>
@@ -440,27 +421,31 @@
       <h3>De-stress by playing video game..</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/school/game">
-      </div>
-      <div class="col-md-8 col-sm-12">
+      <div class="col-md-4 col-sm-12 offset-md-3">
         <div class="row">
           <div class="col-12">
             <h4>Single Player Games</h4>
-            <p>Good Story, good graphic, puzzle games... </p>
-            <p>Favourite Game:??</p>
-          </div>
-          <div class="col-12">
-            <h4>FPS</h4>
-            <p>PVP shooting games</p>          
+            <p>Big fan of games with deep and rich story, stunning graphic, challenging puzzle and fluid combat with complex mechanics.</p>
+            <p>Top 5 Favorite Games:
+              <ul>
+                <li>The Last of Us</li>
+                <li>God of War</li>
+                <li>Monster Hunter</li>
+                <li>Kingdom Hearts</li>
+                <li>Uncharted</li>
+              </ul>
+            </p>
           </div>
         </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <img class="img-fluid" src="assets/images/ps4-controller.png">
       </div>
     </div>
   </div>
 
    <!-- Food -->
-  <div id="sub-content-game" class="container-fluid sub-content main-font grey-background">
+  <div id="sub-content-game" class="container-fluid sub-content main-font main-background">
     <div class="row-sm-12 middle-align">
       <h3>While eating food..</h3>
     </div>
