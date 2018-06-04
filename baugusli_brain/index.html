@@ -103,8 +103,8 @@
           font-size: 1em;
           padding: 30px 0;
         }
-        .sub-content div:first-child {
-          padding-bottom: 10px;
+        .sub-content div h3:first-child {
+          padding-bottom: 30px;
         }
         .grey-background {
           background-color: #F2F2F2;
@@ -270,11 +270,11 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid content main-font content-icon">
+  <div class="container-fluid content main-font content-icon text-center">
     <div class="row">
       <div class="col-md-4 offset-md-2">
         <div class="row justify-content-center">
-          <div class="col-auto">
+          <div class="col-sm-2 col-md-12">
             <img src="assets/images/brain-content-icons/icons8-graduation-scroll-100.png">
           </div>
           <div class="col-10">
@@ -283,9 +283,9 @@
         </div>
       </div>
 
-      <div class="col-md-4 offset-md-1">
+      <div class="col-md-4">
         <div class="row justify-content-center">
-          <div class="col-auto">
+          <div class="col-sm-2 col-md-12">
             <img src="assets/images/brain-content-icons/icons8-business-100.png">
           </div>
           <div class="col-10">
@@ -301,30 +301,32 @@
       <h3>About Me</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-2 col-sm-12 offset-md-2">
+      <div class="col-md-2 col-sm-12 offset-sm-2">
         <img src="assets/images/ba.png" id="profile-pic" class="img-responsive img-thumbnail" alt="Bryan Austin Augusli">
-        <h4>Bryan Austin Augusli</h4>
+        <h5>Bryan Austin Augusli</h5>
         <a class="btn btn-social btn-linkedin" href="https://www.linkedin.com/in/baugusli" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>
         <a class="btn btn-social btn-facebook" href="https://www.facebook.com/baugusli" target="_blank">
           <i class="fab fa-facebook-f"></i>
         </a> 
+        <!--
         <a class="btn btn-social btn-google-plus" href="https://plus.google.com/u/0/101228925204580515169/about" target="_blank">
           <i class="fab fa-google-plus-g"></i>
         </a> 
+        -->
       </div>
       <div class="col-md-6 col-sm-12 left-align">
         <p>
-        I am Bryan Austin Augusli, born in Indonesia, moved to Singapore to study for five years until eventually went to George Mason University and graduated with a major in B.S. Information Technology with a minor in Business. 
+        I am Bryan Austin Augusli, born in Indonesia, moved to Singapore to study for five years and then went to George Mason University and graduated with a major in B.S. Information Technology in 2016. 
         </p>
 
         <p>
-        I was introduced to the world of big data when I interned at Amtrak as a Business Intelligence developer building reports and dashboards for business leaders at Amtrak. With my love of data, I pursued my passion and got a job as a Data Engineer at Collage Group, dealing with public and proprietry data, data warehouses, ETL system, pretty dashboards!
+        I was introduced to the world of big data when I interned at Amtrak as a Business Intelligence developer, building reports and dashboards for business leaders at Amtrak. With my love of data, I pursued my passion and got a job as a Data Engineer at Collage Group, dealing with public and proprietary data, data warehouses, ETL system, beautiful dashboards!
         </p>
 
         <p>
-        During my spare time, I like to play challenging video games with great story, combat and puzzle. When I truly want to relax, I would watch movies or korean dramas. Once I realised that I ate too much delicious food, I would then exercise, usually by swimming; It burns a lot of calories.
+        During my spare time, I like to play challenging video games with great story, combat and puzzle. When I truly want to relax, I would watch movies or korean dramas. Once I realised that I ate too much delicious food, I would then exercise, usually by swimming; It burns a lot of calories!
         </p>
 
         <p>
@@ -336,8 +338,8 @@
 
   <!-- Language -->
   <div id="sub-content-language" class="container-fluid sub-content main-font middle-align no-bottom-padding">
-    <div class="row-sm-12 middle-align no-bottom-padding">
-      <h3>Speaks Four Different Languages</h3>
+    <div class="row-sm-12 middle-align">
+      <h3 class="no-bottom-padding">Speaks Four Different Languages</h3>
     </div>
     <div class="row align-items-center">
       <div class="col-12">
@@ -349,24 +351,38 @@
   <!-- Education -->
   <div id="sub-content-school" class="container-fluid sub-content main-font middle-align main-background">
     <div class="row-sm-12 middle-align">
-      <h3>Studied in Three Different Countries</h3>
+      <h3 class="no-bottom-padding">Studied in Three Different Countries</h3>
     </div>
-    <div class="row align-items-center">
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/school/GMU-logo.png" style="width:200px;">
-        <h4>George Mason University, Virginia, U.S.</h4>
-        <p>B.S in Information Technology with Minor in Business, 3.98 Major GPA on 4.00 scale</p>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="row align-items-start">
+          <div class="col-xl-4 col-sm-12">
+            <div style="height: 150px">
+              <img src="assets/images/school/GMU-logo.png" style="width:200px;">
+            </div>
+            
+            <h4>George Mason University, U.S.</h4>
+            <p>B.S in Information Technology with Minor in Business, 3.98 Major GPA on 4.00 scale</p>
+          </div>
+          <div class="col-xl-4 col-sm-12">
+            <div style="height: 150px">
+              <img src="assets/images/school/nyp-logo-no-background.png" style="width:320px; height: 100px; margin-top: 50px;">
+            </div>
+            
+            <h4>Nanyang Polytechnic, Singapore</h4>
+            <p>Diploma in Information Technology, 3.62 GPA on 4.00 scale</p>
+          </div>
+          <div class="col-xl-4 col-sm-12">
+            <div style="height: 150px">
+              <img src="assets/images/school/universal-school.png">
+            </div>
+            
+            <h4>Universal School, Indonesia</h4>
+            <p>High School</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/school/nyp-logo-no-background.png" style="width:320px; height: 100px;">
-        <h4>Nanyang Polytechnic, Singapore</h4>
-        <p>Diploma in Information Technology, 3.62 GPA on 4.00 scale</p>
-      </div>
-      <div class="col-md-4 col-sm-12">
-        <img src="assets/images/school/universal-school.png">
-        <h4>Universal School, Indonesia</h4>
-        <p>High School</p>
-      </div>
+      
     </div>
   </div>
 
@@ -376,21 +392,21 @@
       <h3>Introduced to the World of Data from Internship at Amtrak as a Business Intelligence Developer</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-5 col-sm-12" style="padding: 50px;">
+      <div class="col-md-4 col-sm-12 offset-md-2" style="padding: 50px;">
         <img class="img-fluid" src="assets/images/laptop-dashboard.png">
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-4 col-sm-12">
         <div class="row">
           <div class="col-12">
             <h4>Develop Dashboard and Reports</h4>
-            <p>Leveraged Tableu to develop beautiful and dynamic dashboard used by business analysts to view organization's proprietry data</p>
-            <p>Developed daily reports on web, train, customer satisfaction metrics using SAP BusinessObject</p>
+            <p>Leveraged Tableu to develop beautiful and dynamic dashboard used by business analysts to view organization's proprietary data.</p>
+            <p>Developed daily reports on web, train, customer satisfaction metrics using SAP BusinessObject.</p>
           </div>
           <div class="col-12">
             <h4>Built Data Tools</h4>
-            <p>Led the project to develop a geospatial analysis tool allowing business analyst to cut and slice census data combined with company proprietry data to analyze U.S. national market and vizualise the data on a map.</p>
-            <p>Contributor to the development of a data tool that crosstab data from different sources.</p>
-            <p>Created a tool to report internal web metrices used to create better content.</p>
+            <p>Led a project to develop a geospatial analysis tool allowing business analyst to cut and slice census data combined with company proprietary data to analyze U.S. national market and vizualise the data on a map.</p>
+            <p>Contributor to the development of a powerful data tool that crosstab data from different sources.</p>
+            <p>Created a tool to report internal web metrices used to create higher quality content and track customer satisfaction metrices.</p>
           </div>
         </div>
       </div>
@@ -403,18 +419,18 @@
       <h3>Became a Data Engineer</h3>
     </div>
     <div class="row">
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-8 col-sm-12 offset-md-2">
         <div class="row">
           <div class="col-4">
             <img src="assets/images/data-engineer/icons8-database-administrator-100.png">
             <h4>Extraction Transformation Loading (ETL)</h4>
-            <p>Develop ETL processes using Informatica or Pentaho Data Integration to extract data from multiple different sources, transform the data and load them into a data warehouse
+            <p>Develop ETL processes using Informatica or Pentaho Data Integration to extract data from multiple different sources, transform the data and load them into a data warehouse.
             </p>
           </div>
           <div class="col-4">
             <img src="assets/images/data-engineer/icons8-big-data-100.png">
             <h4>Data Warehouse</h4>
-            <p>Responsible for architecting data warehouse schema which houses all of organizational data that powers data tools used by business analysts. Amazon Redshift is one of the data warehouse product that I work with. On top of that, I also work with traditional Relational Database System (RDBMS), such as, PostgreSQL and MySQL.</p>
+            <p>Responsible for architecting data warehouse schema which houses all of organizational data that powers data tools used by business analysts. Working with Amazon Redshift, PostgreSQL and MySQL.</p>
           </div>
           <div class="col-4">
             <img src="assets/images/data-engineer/icons8-data-quality-240.png">
@@ -432,7 +448,7 @@
       <h3>Eliminate Stress by Playing Video Game</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-4 col-sm-12 offset-md-3">
+      <div class="col-md-4 col-sm-12 offset-md-2">
         <div class="row">
           <div class="col-12">
             <h4>Single Player Games</h4>
@@ -449,7 +465,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-12">
+      <div class="col-md-3 col-sm-12 offset-md-1">
         <img class="img-fluid" src="assets/images/ps4-controller.png">
       </div>
     </div>
@@ -461,16 +477,20 @@
       <h3>Recharge by Eating Delicious Food</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-6 col-sm-12 offset-md-3">
-        Like everybody else, eating is one of my most favourite activities. That's why I always look forward to trying new food when I visit my home or new places. I love eating the following food cuisines:
-
-        <ul>
-          <li>Korean Food</li>
-          <li>Chinese Food</li>
-          <li>Japanese Food</li>
-          <li>Western Food</li>
-          <li>Indonesian Food</li>
-        </ul>
+      <div class="col-md-8 col-sm-12 offset-md-2">
+        <p>
+        Like everybody else, eating is one of my most favourite activities. That's why I always look forward to trying new food when I visit my home or new places. 
+        </p>
+        <p>
+          I love eating the following food cuisines:
+          <ul>
+            <li>Korean Food</li>
+            <li>Chinese Food</li>
+            <li>Japanese Food</li>
+            <li>Western Food</li>
+            <li>Indonesian Food</li>
+          </ul>
+        </p>
       </div>
     </div>
   </div>
@@ -478,10 +498,10 @@
    <!-- Movies -->
   <div id="sub-content-movie" class="container-fluid sub-content main-font">
     <div class="row-sm-12 middle-align">
-      <h3>Relax by Watching TV-shows and Movies</h3>
+      <h3 class="no-bottom-padding">Relax by Watching TV-shows and Movies</h3>
     </div>
     <div class="row align-items-center">
-      <div class="col-md-5 col-sm-12 offset-md-1">
+      <div class="col-md-5 col-sm-12 offset-md-1 no-bottom-padding">
         <img class="img-fluid" src="assets/images/kdrama-mac.jpg">
       </div>
       <div class="col-md-4 col-sm-12">
@@ -510,10 +530,10 @@
         <div class="row">
           <div class="col-12">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <img class="img-fluid img-thumbnail" src="assets/images/sport/badminton.jpeg">
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <h4>Badminton</h4>
                 <p>Badminton is the most popular sport in Indonesia. I used to train every week and compete at events in my hometown. Unfortunately, there are not many badminton players in my current area. Always looking for people to play with! </p>
               </div>
@@ -521,12 +541,12 @@
           </div>
           <div class="col-12">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-2">
+                <img class="img-fluid img-thumbnail" src="assets/images/sport/swimming.jpeg">
+              </div>
+              <div class="col-md-4">
                 <h4>Swimming</h4>
                 <p>My most favourite sport for burning calories since it's very relaxing and makes me feel good afterwards. Swimming also expands a lot of energy, so it helps eliminating those persistent fats! I had a pretty intense daily swimmming routine when I was in high school since I was representing my school for a swimming competition. As the result, I was very slim back then.</p> 
-              </div>
-              <div class="col-md-3">
-                <img class="img-fluid img-thumbnail" src="assets/images/sport/swimming.jpeg">
               </div>
             </div>
           </div>
@@ -541,7 +561,7 @@
       <h3>Never Stop Learning</h3>
     </div>
     <div class="row">
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-8 col-sm-12 offset-md-2">
         <div class="row">
           <div class="col-4">
             <img src="assets/images/learning/icons8-south-korea-80.png">
