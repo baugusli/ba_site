@@ -4,10 +4,14 @@ const express = require('express');
 const app = express();
 
 const serviceAppPort = 80;
-const mainPath = path.join(__dirname, '/baugusli');
+const mainPath = path.join(__dirname, '/baugusli_brain');
 
 app.get('/', function(req, res) {
   res.sendFile(`${mainPath}/index.html`);
+});
+
+app.post('/send_email', function(req, res) {
+  console.log(req);
 });
 
 // Error handling middleware

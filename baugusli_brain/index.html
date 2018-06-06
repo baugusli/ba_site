@@ -16,7 +16,7 @@
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
     
     
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
     
     <link rel="stylesheet" href="bootstrap.css">
     <!--<script src="jquery.js"></script>-->
@@ -140,7 +140,8 @@
         }
         .ba-btn:hover {
           color: #fff !important;
-          background-color: #144A56;
+          background-color: #144A56 !important;
+          cursor: pointer;
         }
         .marketing-overlay-position {
           top: 78%;
@@ -250,7 +251,7 @@
           position: absolute;
           height: 100%;
           top: 15%;
-          right: 0;
+          right: 1%;
         }
         #scroll-to-top {
           position: fixed;
@@ -261,6 +262,9 @@
           border-radius: 15px 15px 0px 0px;
           border-bottom: 0px;
           margin-right: 50px;
+          border-width: 3px;
+          z-index: 9999;
+          background-color: white;
         }
 
 
@@ -284,20 +288,22 @@
   <!--
     BUGS
    1) ~Clicking on brain section should return the scaling back~
-   2) Clicking on brain section second time should redirect to anchor again
+   2) ~Clicking on brain section second time should redirect to anchor again~
    3) Contact me button cut off when screen is small
+   4) Refreshing page on bottom page should show navi menu up top
+   5) Redirection is not perfect since menu bar is fixed and because of that the menu bar blocks off the sub content title
 
    Features
-   1) Menu bar fixed on top with proper spacing
-   2) After user scrolled past brain section, middle brand in menu bar should go to left
-   3) After user scrolled past brain section, all brain icon and contact me should be on the right navigation menu -- they should be clickable as well + hover animation highlighting background with darker blue
+   1) ~Menu bar fixed on top with proper spacing~
+   2) ~After user scrolled past brain section, middle brand in menu bar should go to left~
+   3) ~After user scrolled past brain section, all brain icon and contact me should be on the right navigation menu -- they should be clickable as well + hover animation highlighting background with darker blue~
    4) Contact me form -> from, subject, message, send -> mailgun -> node.js endpoint
    5) Google analytics 
 
   -->
   <!-- brain icon beside title-->
   <!-- an engineer. avid gamers? Problem solver -->
-  <div id="scroll-to-top" class="middle-align ba-btn">
+  <div id="scroll-to-top" class="middle-align ba-btn" style="display: none;">
     <i class="fas fa-chevron-up fa-3x"></i>
   </div>
   <div class="main-content main-background">
@@ -306,19 +312,18 @@
         <img class="align-middle" style="width:50px;" src="assets/images/icons/ba_brain_icon.svg">
         bryan augusli
       </span>
-      <div id="brain-navigation-menu">
+      <div id="brain-navigation-menu" style="display: none;">
         <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-user-96.png" sub-content-id="sub-content-about">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-language-filled-500.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-mortarboard-90.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-combo-chart-filled-100.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-database-administrator-90.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-joystick-filled-100.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-dining-room-filled-100.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-movie-96.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-weightlifting-filled-100.png">
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-mind-map-52.png">
-        <!-- PHONE -->
-        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/.png">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-language-filled-500.png" sub-content-id="sub-content-language">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-mortarboard-90.png" sub-content-id="sub-content-school">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-combo-chart-filled-100.png" sub-content-id="sub-content-bi">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-database-administrator-90.png" sub-content-id="sub-content-data_engineer">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-joystick-filled-100.png" sub-content-id="sub-content-game">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-dining-room-filled-100.png" sub-content-id="sub-content-food">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-movie-96.png" sub-content-id="sub-content-movie">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-weightlifting-filled-100.png" sub-content-id="sub-content-sport">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-mind-map-52.png" sub-content-id="sub-content-learning">
+        <img class="img-fluid brain-navigation-menu-icon" src="assets/images/brain-icons/icons8-phone-filled-100.png" sub-content-id="sub-content-contact">
       </div>
     </div>
     <div id="brain_canvas">
@@ -649,12 +654,45 @@
     </div>
   </div>
 
+  <!-- Contact Me -->
+  <div id="sub-content-contact" class="container-fluid sub-content main-font left-align grey-background">
+    <div class="row-sm-12 middle-align">
+      <h3>Contact Me</h3>
+    </div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-sm-12 offset-md-2 offset-1">
+        <form action="/send_email" method="post">
+          <div class="form-group row">
+            <label for="emailFrom" class="col-sm-1 col-form-label">From:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="emailFrom" placeholder="Enter your email" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="emailSubject" class="col-sm-1 col-form-label">Subject:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="emailSubject" placeholder="Email subject" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="emailMessage" class="col-sm-1 col-form-label">Message:</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="emailMessage" rows="3" placeholder="Email message" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
   <!-- Footers -->
   <div class="container-fluid footer main-font accent-background-color">
     <div class="row">
       <div class="col-10 col-md-12 col-sm-12 offset-md-2 offset-1">
         <span>© 2018 Bryan Austin Augusli. All Rights Reserved.</span>
-        <span><a href="https://icons8.com/license/">Icons8</a></span>
+        <span><a href="https://icons8.com/license/">Icons by Icons8</a></span>
       </div>
     </div>
   </div>
@@ -821,8 +859,8 @@
   var moreDetail = function(d, i) {
     // drawThoughts(i);
     var subContentId = brainIdMapping[i].contentEleId;
-    if (subContentId) location.hash = '#' + subContentId;
-    unhighlightPart();
+    if (subContentId) scrollToContent('#' + subContentId);
+    resetShapeScale(this);
   };
 
   var percentageIncrease = 40;
@@ -958,11 +996,13 @@
   }
 
   var unhighlightPart = function() {
-    d3.select(this)
-      .attr('transform', '');
-    document.body.style.cursor = "";
+    resetShapeScale(this);
   }
 
+  function resetShapeScale(target) {
+    d3.select(target).attr('transform', '');
+    document.body.style.cursor = "";
+  }
 
   var drawImg = function() {
       img = img.data(d3_geom_voronoi(vertices));
@@ -1076,6 +1116,30 @@
       if(!simulate) force.stop()
   }
 
+  function scrollToContent(contentSelector) {
+    var target = $(contentSelector);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+  }
+
   var brainCanvasId = '#brain_canvas';
   var brainMenuNavigationId = '#brain-navigation-menu';
 
@@ -1091,19 +1155,17 @@
       $(scrollToTop).css('display', 'block')
       console.log('left');
      },
-     tolerance: 100
+     tolerance: 0
   });
 
   //go to top
   $(scrollToTop).click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({
-      scrollTop: $("body").offset().top
-    }, 500);
+    scrollToContent('#brain_canvas');
   });
 
   $('.brain-navigation-menu-icon').click(function() {
     var subContentId = $(this).attr('sub-content-id');
+    scrollToContent('#' + subContentId);
     console.log(subContentId);
   });
 
