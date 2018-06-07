@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const config = require('./config/cred.js');
 
 const serviceAppPort = 8080;
 const mainPath = path.join(__dirname, '/baugusli_brain');
@@ -19,13 +20,14 @@ app.get('/', function(req, res) {
 app.post('/send_email', function(req, res) {
   console.log(req.body);
 
-  var api_key = '';
-  var domain = 'mg.bryanaugusli.com';
+  var api_key = config.MAILGUN_API_KEY;
+  var domain = config.MAILGUN_DOMAIN;
+  var mail_destination = config.DEFAULT_EMAIL || 'bryan_augusli@hotmail.com';
   var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
  	
   var data = {
     from: req.body.emailFrom,
-    to: 'bryan_augusli@hotmail.com',
+    to: mail_destination,
     subject: req.body.emailSubject,
     text: req.body.emailMessage
   };
