@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
 app.post('/send_email', function(req, res) {
   console.log(req.body);
 
-  var api_key = 'c66084457ae318172e5d85d56df945e3-b6183ad4-68eacdc7';
+  var api_key = '';
   var domain = 'mg.bryanaugusli.com';
   var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
  	
