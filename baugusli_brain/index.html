@@ -109,6 +109,9 @@
         .sub-content div h3:first-child {
           padding-bottom: 30px;
         }
+        .sub-content:focus {
+          top: -120px;
+        }
         .grey-background {
           background-color: #F2F2F2;
         }
@@ -218,6 +221,10 @@
         /* Custom Ids */
         #ba-title {
           font-size: 3em;
+          margin-left: 13%;
+        }
+        #ba-title:hover {
+          cursor: pointer;
         }
         #brain_canvas {
           padding-top: 70px;
@@ -281,6 +288,28 @@
             padding: 30px 0;
           }
         }
+
+        @media(min-width:1600px) {
+          #title-overlay {
+            text-align: center;
+          }
+          #ba-title {
+            margin-left: 0px;
+          }
+        }
+
+        @media(max-width: 1200px) {
+          #title-overlay {
+            text-align: center;
+          } 
+          #brain-navigation-menu {
+            display: none !important;
+          }
+          #ba-title {
+            margin-left: 0px;
+          }
+        }
+
     </style>
 </head>
 <body>
@@ -307,7 +336,7 @@
     <i class="fas fa-chevron-up fa-3x"></i>
   </div>
   <div class="main-content main-background">
-    <div id="title-overlay" class="full-width middle-align accent-background-color menu-bar">
+    <div id="title-overlay" class="full-width accent-background-color menu-bar">
       <span id="ba-title" class="title-color title-font">
         <img class="align-middle" style="width:50px;" src="assets/images/icons/ba_brain_icon.svg">
         bryan augusli
@@ -334,7 +363,7 @@
         <h2>Video Game Enthusiast</h2>
       </div>
       <div class="btn-padding">
-        <a class="btn ba-btn">CONTACT ME</a>
+        <a id="contact-me-btn" class="btn ba-btn" sub-content-id="sub-content-contact">CONTACT ME</a>
       </div>
     </div>
   </div>
@@ -482,7 +511,6 @@
       </div>
     </div>
   </div>
-
   <!-- Data Engineer -->
   <div id="sub-content-data_engineer" class="container-fluid sub-content main-font middle-align content-icon grey-background">
     <div class="row-sm-12 middle-align">
@@ -663,24 +691,24 @@
       <div class="col-10 col-md-8 col-sm-12 offset-md-2 offset-1">
         <form action="/send_email" method="post">
           <div class="form-group row">
-            <label for="emailFrom" class="col-sm-1 col-form-label">From:</label>
-            <div class="col-sm-10">
+            <label for="emailFrom" class="col-2 col-lg-1 col-form-label">From:</label>
+            <div class="col-sm-6">
               <input type="email" class="form-control" id="emailFrom" name="emailFrom" placeholder="Enter your email" required>
             </div>
           </div>
           <div class="form-group row">
-            <label for="emailSubject" class="col-sm-1 col-form-label">Subject:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="emailSubject" name="emailSubject" placeholder="Email subject" required>
+            <label for="emailSubject" class="col-2 col-lg-1 col-form-label">Subject:</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="emailSubject" name="emailSubject" placeholder="Enter email subject" required>
             </div>
           </div>
           <div class="form-group row">
-            <label for="emailMessage" class="col-sm-1 col-form-label">Message:</label>
+            <label for="emailMessage" class="col-2 col-lg-1 col-form-label">Message:</label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="emailMessage" rows="3" name="emailMessage" placeholder="Email message" required></textarea>
+              <textarea class="form-control" id="emailMessage" rows="3" name="emailMessage" placeholder="Enter email message" required></textarea>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Send</button>
+          <button type="submit" class="btn ba-btn accent-background-color" style="color: white;">Send</button>
         </form>
       </div>
     </div>
@@ -692,7 +720,7 @@
     <div class="row">
       <div class="col-10 col-md-12 col-sm-12 offset-md-2 offset-1">
         <span>© 2018 Bryan Austin Augusli. All Rights Reserved.</span>
-        <span><a href="https://icons8.com/license/">Icons by Icons8</a></span>
+        <span><a href="https://icons8.com/license/">Icons8</a></span>
       </div>
     </div>
   </div>
@@ -1124,7 +1152,7 @@
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 70
         }, 1000, function() {
           // Callback after animation
           // Must change focus!
@@ -1134,6 +1162,7 @@
             return false;
           } else {
             $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+
             $target.focus(); // Set focus again
           };
         });
@@ -1143,16 +1172,16 @@
   var brainCanvasId = '#brain_canvas';
   var brainMenuNavigationId = '#brain-navigation-menu';
 
-  var scrollToTop = '#scroll-to-top';
+  var scrollToTop = '#scroll-to-top, #ba-title';
   $(brainCanvasId).onScreen({
      doIn: function() {
      $(brainMenuNavigationId).css('display', 'none');
-     $(scrollToTop).css('display', 'none')
+     // $(scrollToTop).css('display', 'none')
      console.log('in');
      },
      doOut:function() {
       $(brainMenuNavigationId).css('display', 'block');
-      $(scrollToTop).css('display', 'block')
+      // $(scrollToTop).css('display', 'block')
       console.log('left');
      },
      tolerance: 0
@@ -1163,7 +1192,7 @@
     scrollToContent('#brain_canvas');
   });
 
-  $('.brain-navigation-menu-icon').click(function() {
+  $('.brain-navigation-menu-icon, #contact-me-btn').click(function() {
     var subContentId = $(this).attr('sub-content-id');
     scrollToContent('#' + subContentId);
     console.log(subContentId);
