@@ -415,3 +415,31 @@ $('.brain-navigation-menu-icon, #contact-me-btn').click(function() {
   var subContentId = $(this).attr('sub-content-id');
   scrollToContent('#' + subContentId);
 });
+
+$( "#contact-me-form" ).submit(function( event ) {
+  event.preventDefault();
+
+  var emailFrom = $('#emailFrom').val();
+  var emailSubject = $('#emailSubject').val();
+  var emailMessage = $('#emailMessage').val();
+
+  var emailPayload = {
+    emailFrom: emailFrom,
+    emailSubject: emailSubject,
+    emailMessage: emailMessage,
+  };
+  console.log(emailPayload);
+
+  $.ajax({
+    url: '/send_email',
+    data: emailPayload,
+    method: 'post',
+    error: function() {
+      $('#contact-me-err').show();
+    },
+    success: function() {
+      console.log('success');
+      $('#contact-me-msg').show().fadeOut(10000);
+    }
+  })
+});

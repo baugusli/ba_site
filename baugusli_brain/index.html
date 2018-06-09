@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
-    <link rel="stylesheet" href="assets/css/fontawesome.v.5.0.13.all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/bootstrap.v4.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     
@@ -376,7 +376,7 @@
     </div>
     <div class="row">
       <div class="col-10 col-md-8 col-sm-12 offset-md-2 offset-1">
-        <form action="/send_email" method="post">
+        <form id="contact-me-form" action="/send_email" method="post">
           <div class="form-group row">
             <label for="emailFrom" class="col-2 col-lg-1 col-form-label">From:</label>
             <div class="col-sm-6">
@@ -396,6 +396,13 @@
             </div>
           </div>
           <button type="submit" class="btn ba-btn accent-background-color" style="color: white;">Send</button>
+          <div id="contact-me-msg" class="contact-alert alert alert-success" role="alert" style="display: none;">
+            Email sent successfuly. Thank you for contacting me! I will reply to you message as soon as possible.
+          </div>
+
+          <div id="contact-me-err" class="contact-alert alert alert-danger" role="alert" style="display: none;">
+            Failed to send email. Please contact me at <b>bryan_augusli@hotmail.com.</b>
+          </div>
         </form>
       </div>
     </div>
