@@ -1,0 +1,264 @@
+body{
+  margin: 0px;
+  overflow-x: hidden;
+  /*overflow: hidden;*/
+}
+/* SVG Styles */
+circle {
+    stroke: #EFEDF5;
+    fill: #EFEDF5;
+    pointer-events: none;
+}
+line {
+    pointer-events: none;
+    stroke: #EFEDF5;
+    stroke-width: 2px;
+    opacity: .05;
+}
+path{
+    stroke: #144A56;
+}
+
+/* Common Classes */
+.title-color {
+  color: white;
+}
+.title-font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.middle-align {
+  text-align: center;
+}
+.left-align {
+  text-align: left;
+}
+.overlay {
+  position: absolute;
+}
+.full-width {
+  width: 100%;
+}
+.left-align {
+  text-align:left;
+}
+.top-align {
+  vertical-align: top;
+}
+.main-content {
+  height: 100vh;
+}
+.main-font {
+  font-family: 'Rubik', 'Open Sans', Arial, sans-serif;
+}
+.accent-color {
+  color: #144A56;
+}
+.content {
+  font-size: 1.2em;
+  padding: 50px 0;
+}
+.content-icon img {
+  max-width: 60px;
+  padding-bottom: 10px;
+}
+.sub-content {
+  font-size: 1em;
+  padding: 30px 0;
+}
+.sub-content div h3:first-child {
+  padding-bottom: 30px;
+}
+.sub-content:focus {
+  top: -120px;
+}
+.grey-background {
+  background-color: #F2F2F2;
+}
+.accent-background-color {
+  background-color: #144A56;
+}
+
+/* Custom Classes */
+.brain-content {
+  position: absolute;
+  display: none;
+  text-align: center;
+}
+.brain-content-title {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+.brain-content-col .row{
+  margin-bottom: 10px;
+}
+.ba-btn {
+  border: solid 1px #144A56;
+  stroke: #144A56;
+  color: #144A56;
+}
+.ba-btn:hover {
+  color: #fff !important;
+  background-color: #144A56 !important;
+  cursor: pointer;
+}
+.marketing-overlay-position {
+  top: 78%;
+}
+.main-background {
+  background-color: #EDE8E2;
+}
+.btn-social {
+  border: 0;
+  color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  padding: 0;
+}
+.btn-social.btn-facebook {
+  background: #4f7dd4;
+}
+.btn-social.btn-facebook:hover {
+  background: #789bde;
+}
+.btn-social.btn-twitter {
+  background: #5bceff;
+}
+.btn-social.btn-twitter:hover {
+  background: #8eddff;
+}
+.btn-social.btn-linkedin {
+  background: #21a6d8;
+}
+.btn-social.btn-linkedin:hover {
+  background: #49b9e3;
+}
+.btn-social.btn-google-plus {
+  background: #dc422b;
+}
+.btn-social.btn-google-plus:hover {
+  background: #e36957;
+}
+.btn-social:hover {
+  color: #fff;
+}
+.no-bottom-padding {
+  padding-bottom: 0px !important;
+}
+.footer {
+  padding: 20px 0;
+  color: white;
+}
+.food-background {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)
+  ), 
+  url('../images/buffet-chicken-cooking.jpg') no-repeat center center fixed; 
+  background-size: cover; 
+  width: 100%; 
+  height: 100%;
+  color: white;
+}
+.brain-navigation-menu-icon {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+}
+.brain-navigation-menu-icon:hover {
+  cursor: pointer;
+  background-color: #4F808C;
+}
+
+/* Custom Ids */
+#ba-title {
+  font-size: 3em;
+  margin-left: 13%;
+}
+#ba-title:hover {
+  cursor: pointer;
+}
+#brain_canvas {
+  padding-top: 70px;
+}
+#pick-me-brain{
+  font-size: 1.5em;
+  stroke: #144A56;
+  fill: #144A56;
+}
+#title-overlay {
+  border-bottom: 1px solid #144A56;
+  position: fixed;
+  z-index: 9999;
+}
+#marketing-overlay {
+  font-size: 1em;
+  stroke: #144A56;
+}
+#profile-pic {
+  width: 200px;
+}
+#sub-content-school img{
+  width: 150px;
+  height: 150px;
+  padding-bottom: 20px;
+}
+#brain-navigation-menu {
+  float: right;
+  position: absolute;
+  height: 100%;
+  top: 15%;
+  right: 1%;
+}
+#scroll-to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 60px;
+  width: 80px;
+  border-radius: 15px 15px 0px 0px;
+  border-bottom: 0px;
+  margin-right: 50px;
+  border-width: 3px;
+  z-index: 9999;
+  background-color: white;
+}
+
+
+/* Media Selectors */
+@media(min-height:800px){
+  .main-content {
+    height: 80vh;
+  }
+  .marketing-overlay-position {
+    top: 60%;
+  }
+  .btn-padding {
+    padding: 30px 0;
+  }
+}
+
+@media(min-width:1600px) {
+  #title-overlay {
+    text-align: center;
+  }
+  #ba-title {
+    margin-left: 0px;
+  }
+}
+
+@media(max-width: 1200px) {
+  #title-overlay {
+    text-align: center;
+  } 
+  #brain-navigation-menu {
+    display: none !important;
+  }
+  #ba-title {
+    margin-left: 0px;
+  }
+}
