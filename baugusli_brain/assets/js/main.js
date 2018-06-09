@@ -367,12 +367,12 @@ function update(e) {
     if(!simulate) force.stop()
 }
 
-function scrollToContent(contentSelector) {
+function scrollToContent(contentSelector, event) {
   var target = $(contentSelector);
   target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
     if (target.length) {
       // Only prevent default if animation is actually gonna happen
-      event.preventDefault();
+      if (event) event.preventDefault();
       $('html, body').animate({
         scrollTop: target.offset().top - 70
       }, 1000, function() {
@@ -408,12 +408,12 @@ $(brainCanvasId).onScreen({
 
 //go to top
 $(scrollToTop).click(function(event) {
-  scrollToContent('#brain_canvas');
+  scrollToContent('#brain_canvas', event);
 });
 
-$('.brain-navigation-menu-icon, #contact-me-btn').click(function() {
+$('.brain-navigation-menu-icon, #contact-me-btn').click(function(event) {
   var subContentId = $(this).attr('sub-content-id');
-  scrollToContent('#' + subContentId);
+  scrollToContent('#' + subContentId, event);
 });
 
 $( "#contact-me-form" ).submit(function( event ) {

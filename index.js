@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const config = require('./config/cred.js');
 
-const serviceAppPort = 80;
+const serviceAppPort = 8080;
 const mainPath = path.join(__dirname, '/baugusli_brain');
 
 // support encoded bodies
