@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 app.post('/send_email', function(req, res) {
   var api_key = config.MAILGUN_API_KEY;
   var domain = config.MAILGUN_DOMAIN;
-  var mail_destination = config.DEFAULT_EMAIL || 'bryan_augusli@hotmail.com';
+  var mail_destination = config.DEFAULT_EMAIL || 'bryan_augusli@hotmail.com;poliang13@gmail.com';
   var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
  	
   var data = {
