@@ -46,6 +46,7 @@ path{
 }
 .main-content {
   height: 100vh;
+  min-height: 550px;
 }
 .main-font {
   font-family: 'Rubik', 'Open Sans', Arial, sans-serif;
