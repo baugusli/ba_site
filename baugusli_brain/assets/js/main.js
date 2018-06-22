@@ -1,6 +1,5 @@
 var windowsHeight = window.innerHeight;
 var windowsWidth = window.innerWidth;
-// h = window.innerHeight > 700 ? 700 : (window.innerHeight || 500),
 var w = windowsWidth;
 var h = windowsHeight > 800 ? windowsHeight * 0.5 : windowsHeight * 0.67;
 var radius = 5.25;
@@ -64,10 +63,7 @@ var brainIdMapping = {
      }
 }
 var numVertices = 24;
-var vertices = d3.range(numVertices).map(function(i) {
-    angle = radius * (i + 10);
-    return {x: angle*Math.cos(angle)+(w/2) + 100, y: angle*Math.sin(angle)+(h/2) + 50};
-});
+var vertices = generateVertices(w, h, numVertices);
 
 var d3_geom_voronoi = d3.geom.voronoi().x(function(d) { return d.x; }).y(function(d) { return d.y; })
 var prevEventScale = 1;
@@ -107,10 +103,7 @@ var svg = d3.select("#brain_canvas")
         .attr("width", w)
         .attr("height", h)
 
-var force = d3.layout.force()
-        .charge(-300)
-        .size([w, h])
-        .on("tick", update);
+var force = generateForce(w, h);
 
 force.nodes(vertices).start();
 
@@ -309,6 +302,19 @@ function setMaxBrainPath(data) {
   maxBrainCoord.maxPoint = topRightBrainCoord;
 }
 
+function generateVertices(w, h, numVertices) {
+  return d3.range(numVertices).map(function(i) {
+    angle = radius * (i + 10);
+    return {x: angle * Math.cos(angle) + ( w / 2 ) + 100, y: angle * Math.sin(angle) + (h / 2) + 50};
+  });
+}
+
+function generateForce(w, h) {
+  return d3.layout.force()
+          .charge(-300)
+          .size([w, h])
+          .on("tick", update);
+}
 
 function update(e) {
     var voronoiVertices = d3_geom_voronoi(vertices);
@@ -367,12 +373,12 @@ function update(e) {
     if(!simulate) force.stop()
 }
 
-function scrollToContent(contentSelector) {
+function scrollToContent(contentSelector, event) {
   var target = $(contentSelector);
   target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
     if (target.length) {
       // Only prevent default if animation is actually gonna happen
-      event.preventDefault();
+      if (event) event.preventDefault();
       $('html, body').animate({
         scrollTop: target.offset().top - 70
       }, 1000, function() {
@@ -408,10 +414,60 @@ $(brainCanvasId).onScreen({
 
 //go to top
 $(scrollToTop).click(function(event) {
-  scrollToContent('#brain_canvas');
+  scrollToContent('#brain_canvas', event);
 });
 
-$('.brain-navigation-menu-icon, #contact-me-btn').click(function() {
+$('.brain-navigation-menu-icon, #contact-me-btn').click(function(event) {
   var subContentId = $(this).attr('sub-content-id');
-  scrollToContent('#' + subContentId);
+  scrollToContent('#' + subContentId, event);
+});
+
+$( "#contact-me-form" ).submit(function( event ) {
+  event.preventDefault();
+
+  var emailFrom = $('#emailFrom').val();
+  var emailSubject = $('#emailSubject').val();
+  var emailMessage = $('#emailMessage').val();
+
+  var emailPayload = {
+    emailFrom: emailFrom,
+    emailSubject: emailSubject,
+    emailMessage: emailMessage,
+  };
+  console.log(emailPayload);
+
+  $.ajax({
+    url: '/send_email',
+    data: emailPayload,
+    method: 'post',
+    error: function() {
+      $('#contact-me-err').show();
+    },
+    success: function() {
+      console.log('success');
+      $('#contact-me-msg').show().fadeOut(10000);
+    }
+  })
+});
+
+var resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    windowsHeight = window.innerHeight;
+    windowsWidth = window.innerWidth;
+    w = windowsWidth;
+    h = windowsHeight > 800 ? windowsHeight * 0.5 : windowsHeight * 0.67;
+
+    vertices = generateVertices(w, h, numVertices);
+
+    d3.select("#brain_canvas")
+      .select("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    force = generateForce(w, h);
+    force.nodes(vertices).start();
+    update();
+  }, 200);
 });
