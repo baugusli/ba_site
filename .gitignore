@@ -1,3 +1,5 @@
 node_modules
 config/*
 py_script/config/config.yml
+py_script/__pycache__/*
+.DS_Store
