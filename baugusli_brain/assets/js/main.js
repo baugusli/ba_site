@@ -201,7 +201,15 @@ function drawThoughts(id) {
     var secondThought = generateThoughtPath(secondOffset, smallThoughtDimension);
 
     var contentDimension = {width: 400, height: 390};
-    var contentOffset = secondOffset.map((coord, i) => (i === 0) ? coord + 30 : coord + 190);
+    var contentOffset = secondOffset.map(function(coord, i) {
+      var coordOffset = coord;
+      if (i === 0) {
+        coordOffset = coordOffset + 30;
+      } else {
+        coordOffset = coordOffset + 190;
+      }
+      return coordOffset;
+    });
     var content = generateThoughtPath(contentOffset, contentDimension);
 
     // Content
@@ -338,9 +346,17 @@ function update(e) {
     
     drawImg();
 
+    var drawClickMePath = true;
     var clickMePath = document.querySelector('#click-me-path');
-    if (clickMePath) clickMePath.remove();
-    svg.append("path")
+    if (clickMePath && clickMePath.remove) {
+      clickMePath.remove();
+    } else if (clickMePath && !clickMePath.remove) {
+      drawClickMePath = false;
+      document.querySelector('#pick-me-brain').style.display = 'none';
+    }
+
+    if (drawClickMePath) {
+      svg.append("path")
       .attr("id", "click-me-path")
       .attr("d", function(d, i) { 
         // TODO: MAGIC NUMBER!!
@@ -360,15 +376,19 @@ function update(e) {
       .style("stroke", "#144A56")
       .style("display", "none");
 
-    var pickMePath = document.querySelector('#pick-me-brain');
-    if (pickMePath) pickMePath.remove();
-    svg
-      .append("text")
-      .attr("id", "pick-me-brain")
-      .attr("class", "main-font")
-      .append("textPath")
-      .attr('xlink:xlink:href', '#click-me-path')
-      .text("Pick My Brain");    
+      var pickMePath = document.querySelector('#pick-me-brain');
+      if (pickMePath && pickMePath.remove) {
+        pickMePath.remove();
+      } 
+      svg
+        .append("text")
+        .attr("id", "pick-me-brain")
+        .attr("class", "main-font")
+        .append("textPath")
+        .attr('xlink:xlink:href', '#click-me-path')
+        .text("Pick My Brain");
+    }
+    
 
     if(!simulate) force.stop()
 }
