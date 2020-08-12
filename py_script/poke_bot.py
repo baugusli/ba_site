@@ -5,12 +5,7 @@ import re
 client = discord.Client()
 poke_meow_bot_id = 664508672713424926
 auto_catch_user_id_list = [228996025942147075]
-
-# Ball Config
-pb = ['Blue']
-gb = [16484616]
-ub = ['Yellow']
-mb = ['Purple', 'Pink', 'Green']
+redirect_channel_id = 742745676139462729
 
 
 async def run_poke_bot_loop(discord_channel):
@@ -41,6 +36,11 @@ def get_pokeball_to_use(embed_dict, is_stage):
     return ball
 
 
+async def send_message_to_channel(channel_id, msg, embed):
+    channel = client.get_channel(channel_id)
+    return await channel.send(content=msg, embed=embed)
+
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -53,19 +53,14 @@ async def on_message(message):
 
     if message.author.id == poke_meow_bot_id:
         msg_content = message.content
-        for embed in message.embeds:
-            embed_color = embed.color
-            embed_desc = embed.description
-            print(embed_color)
-            print(embed_desc)
-            print(embed.to_dict())
-            ball = get_pokeball_to_use(embed.to_dict(), True)
-            # await message.channel.send(content=msg_content, embed=embed)
-            await message.channel.send(content=ball)
-
-    # await message.channel.send(message.content)
-
-    # if message.content.startswith('|run_poke_bot'):
-    #     await message.channel.send(message.content)
+        msg_keyword = 'found a wild'
+        pokeball_to_redirect = ['mb', 'prb']
+        if msg_keyword in msg_content:
+            for embed in message.embeds:
+                embed_color = embed.color
+                embed_desc = embed.description
+                ball = get_pokeball_to_use(embed.to_dict(), False)
+                if ball in pokeball_to_redirect:
+                    await send_message_to_channel(redirect_channel_id, msg_content, embed)
 
 client.run(get_discord_bot_token())
